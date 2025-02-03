@@ -1,6 +1,6 @@
 export interface ITrustPilot {
-  showGrow: boolean;
-  showTrustPilot: boolean;
+  showGrow?: boolean;
+  showTrustPilot?: boolean;
 }
 
 export interface IProperty {
