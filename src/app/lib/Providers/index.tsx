@@ -3,7 +3,7 @@
 import * as React from "react";
 
 function Providers({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+  return <>{children}</>;
 }
 
 export default Providers;

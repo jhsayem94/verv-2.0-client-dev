@@ -1,7 +1,9 @@
+import Verv from "../../components/pages/About/Verv/Verv";
+
 const page = () => {
   return (
     <div>
-      <h2>This is a page component</h2>
+      <Verv />
     </div>
   );
 };
