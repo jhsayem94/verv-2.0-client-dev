@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Palm Harbor",
+    "address": {
+      "street": "2699 Green Valley",
+      "city": "Highland Lake",
+      "state": "FL"
+    },
+    "pricePerMonth": 2095,
+    "currency": "GBP",
+    "status": "POPULAR",
+    "features": {
+      "beds": 3,
+      "bathrooms": 2,
+      "size": {
+        "width": 5,
+        "length": 7,
+        "unit": "m²"
+      }
+    },
+    "image": "imagePath"
+  },
+  {
+    "id": 2,
+    "title": "Palm Harbor",
+    "address": {
+      "street": "2699 Green Valley",
+      "city": "Highland Lake",
+      "state": "FL"
+    },
+    "pricePerMonth": 2095,
+    "currency": "GBP",
+    "status": "POPULAR",
+    "features": {
+      "beds": 3,
+      "bathrooms": 2,
+      "size": {
+        "width": 5,
+        "length": 7,
+        "unit": "m²"
+      }
+    },
+    "image": "imagePath"
+  },
+  {
+    "id": 3,
+    "title": "Palm Harbor",
+    "address": {
+      "street": "2699 Green Valley",
+      "city": "Highland Lake",
+      "state": "FL"
+    },
+    "pricePerMonth": 2095,
+    "currency": "GBP",
+    "status": "POPULAR",
+    "features": {
+      "beds": 3,
+      "bathrooms": 2,
+      "size": {
+        "width": 5,
+        "length": 7,
+        "unit": "m²"
+      }
+    },
+    "image": "imagePath"
+  },
+  {
+    "id": 4,
+    "title": "Palm Harbor",
+    "address": {
+      "street": "2699 Green Valley",
+      "city": "Highland Lake",
+      "state": "FL"
+    },
+    "pricePerMonth": 2095,
+    "currency": "GBP",
+    "status": "POPULAR",
+    "features": {
+      "beds": 3,
+      "bathrooms": 2,
+      "size": {
+        "width": 5,
+        "length": 7,
+        "unit": "m²"
+      }
+    },
+    "image": "imagePath"
+  },
+  {
+    "id": 5,
+    "title": "Palm Harbor",
+    "address": {
+      "street": "2699 Green Valley",
+      "city": "Highland Lake",
+      "state": "FL"
+    },
+    "pricePerMonth": 2095,
+    "currency": "GBP",
+    "status": "POPULAR",
+    "features": {
+      "beds": 3,
+      "bathrooms": 2,
+      "size": {
+        "width": 5,
+        "length": 7,
+        "unit": "m²"
+      }
+    },
+    "image": "imagePath"
+  }
+]

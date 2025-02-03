@@ -7,14 +7,9 @@ import ellipse5 from "../../../../assets/images/ellipse-5.png";
 import ellipse6 from "../../../../assets/images/ellipse-6.png";
 import rightEllipse from "../../../../assets/images/right-ellipse.jpg";
 import oliveTree from "../../../../assets/images/olive-tree.png";
+import { ITrustPilot } from "@/types";
 
-const TrustPilot = ({
-  showGrow,
-  showTrustPilot,
-}: {
-  showGrow: boolean;
-  showTrustPilot: boolean;
-}) => {
+const TrustPilot = ({ showGrow, showTrustPilot }: ITrustPilot) => {
   const imageList = [ellipse2, ellipse3, ellipse4, ellipse5, ellipse6];
   const countElement = [1, 2, 3, 4, 5];
 
