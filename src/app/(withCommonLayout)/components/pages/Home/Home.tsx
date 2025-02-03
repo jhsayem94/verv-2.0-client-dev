@@ -1,10 +1,12 @@
+import TrustPilot from "../../Shared/TrustPilot";
 import Hero from "./Hero";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Hero />
-    </div>
+      <TrustPilot showGrow={true} showTrustPilot={true} />
+    </>
   );
 };
 

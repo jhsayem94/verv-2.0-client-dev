@@ -9,8 +9,6 @@ const Hero = () => {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundColor: "lightcyan",
-    // width: "1216px",
-    // height: "528px",
   };
   return (
     <header
