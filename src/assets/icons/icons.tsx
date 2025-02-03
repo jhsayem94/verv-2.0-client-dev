@@ -77,3 +77,46 @@ export const HomeIcon: React.FC<IconSvgProps> = ({
     />
   </svg>
 );
+
+export const LocationIcon: React.FC<IconSvgProps> = ({
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 18 21"
+    fill="none"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M9 20.5C12.375 20.5 18 14.2981 18 9.38889C18 4.47969 13.9706 0.5 9 0.5C4.02944 0.5 0 4.47969 0 9.38889C0 14.2981 5.625 20.5 9 20.5ZM9 12.5C10.6569 12.5 12 11.1569 12 9.5C12 7.84315 10.6569 6.5 9 6.5C7.34315 6.5 6 7.84315 6 9.5C6 11.1569 7.34315 12.5 9 12.5Z"
+      fill="#50B533"
+    />
+  </svg>
+);
+
+export const SearchIcon: React.FC<IconSvgProps> = ({
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 25 25"
+    fill="none"
+  >
+    <path
+      d="M22.5 22.5L20.5 20.5M2.5 12C2.5 6.75329 6.75329 2.5 12 2.5C17.2467 2.5 21.5 6.75329 21.5 12C21.5 17.2467 17.2467 21.5 12 21.5C6.75329 21.5 2.5 17.2467 2.5 12Z"
+      stroke="white"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
