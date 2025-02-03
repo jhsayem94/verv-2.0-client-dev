@@ -1,3 +1,4 @@
+import AreLandlord from "../../Shared/AreLandlord";
 import TrustPilot from "../../Shared/TrustPilot";
 import Hero from "./Hero";
 import HowItWork from "./HowItWork";
@@ -10,6 +11,7 @@ const Home = () => {
       <TrustPilot showGrow={true} showTrustPilot={true} />
       <HowItWork />
       <PropertyDemand />
+      <AreLandlord />
     </>
   );
 };
