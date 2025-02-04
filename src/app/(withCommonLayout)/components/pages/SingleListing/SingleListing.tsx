@@ -6,7 +6,7 @@ const SingleListing = () => {
     <section className="h-[973px] bg-[#EEF1F3]">
       <div className="w-[1216px] h-[786px] bg-blue-300 m-auto">
         {/* basic property information */}
-        <div>
+        <div className="mb-6">
           <p className="text-colorTextSecondary text-lg font-medium mb-[32px]">
             Home / Birmingham / Houses / Grange Road
           </p>
