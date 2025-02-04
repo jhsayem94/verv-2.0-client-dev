@@ -1,8 +1,10 @@
+import SingleListing from "../components/pages/SingleListing/SingleListing";
+
 const page = () => {
   return (
-    <div>
-      <h2>This is single listing page</h2>
-    </div>
+    <>
+      <SingleListing />
+    </>
   );
 };
 
