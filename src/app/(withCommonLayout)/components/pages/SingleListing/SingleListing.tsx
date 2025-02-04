@@ -1,4 +1,5 @@
 import { CalendarIcon, HomeFill, LocationIcon } from "@/assets/icons/icons";
+import VerticalCarousel from "./VerticalCarousel";
 
 const SingleListing = () => {
   return (
@@ -57,6 +58,8 @@ const SingleListing = () => {
             </div>
           </div>
         </div>
+        {/* carousel */}
+        <VerticalCarousel />
       </div>
     </section>
   );
