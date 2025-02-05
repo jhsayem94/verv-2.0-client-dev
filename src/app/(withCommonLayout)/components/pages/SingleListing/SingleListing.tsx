@@ -177,7 +177,53 @@ const SingleListing = () => {
 
       {/* property information */}
       <section className="w-[1216px] gap-8 m-auto mt-14 relative">
-        <div className="w-[800px] h-[800px] bg-blue-500"></div>
+        <div className="w-[800px]">
+          <div className="flex flex-col justify-center gap-8 px-6 py-8 rounded-3xl bg-[#EEF1F3]">
+            {/* cashback offer */}
+            <div className="flex gap-4">
+              <StarFill width={24} height={24} fill="#50B533" />
+              <div className="space-y-1">
+                <h3 className="text-[20px] text-colorTextPrimary font-semibold leading-[120%]">
+                  £300 Cashback Offer
+                </h3>
+                <p className="text-lg text-colorTextPrimary leading-[150%]">
+                  Earn up to £300 cashback when you book 6 bed, 3 bath house for
+                  2025/26.
+                </p>
+              </div>
+            </div>
+
+            {/* refer offer */}
+            <div className="flex gap-4">
+              <StarFill width={24} height={24} fill="#50B533" />
+              <div className="space-y-1">
+                <h3 className="text-[20px] text-colorTextPrimary font-semibold leading-[120%]">
+                  Refer a friend offer
+                </h3>
+                <p className="text-lg text-colorTextPrimary leading-[150%]">
+                  Intro your mates to this landlord and share £400 with the code
+                  SHARE400.
+                </p>
+              </div>
+            </div>
+
+            {/* book */}
+            <div className="flex gap-4">
+              <StarFill width={24} height={24} fill="#50B533" />
+              <div className="space-y-1">
+                <h3 className="text-[20px] text-colorTextPrimary font-semibold leading-[120%]">
+                  Book with confidence
+                </h3>
+                <p className="text-lg text-colorTextPrimary leading-[150%]">
+                  Need to change your booking or not received your visa?
+                </p>
+                <p className="text-lg text-colorTextPrimary leading-[150%] pt-4">
+                  Terms & Conditions apply. See Verv’s website for details.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* profile */}
         <div className="w-[384px] px-[76px] py-[40px] inline-flex flex-col items-center justify-center rounded-[24px] border border-[#EEF1F3] absolute right-0 top-0">
