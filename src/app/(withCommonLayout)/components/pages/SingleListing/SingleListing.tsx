@@ -7,12 +7,14 @@ import {
   LinkedinShare,
   LocationIcon,
   ReportIcon,
+  StarFill,
   TweeterShare,
   WhatsappShare,
   YouTubeShare,
 } from "@/assets/icons/icons";
 import VerticalCarousel from "./VerticalCarousel";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const SingleListing = () => {
   return (
@@ -97,6 +99,8 @@ const SingleListing = () => {
           </div>
         </div>
       </section>
+
+      {/* payment cards */}
       <section className="w-[1216px] h-[182px] m-auto py-6 px-[35px] bg-white rounded-[24px] shadow-[0px_4px_20px_rgba(0,0,0,0.10)] -mt-[91px]">
         <div className="flex justify-center items-center gap-10">
           {/* amount */}
@@ -167,6 +171,53 @@ const SingleListing = () => {
             <Button className="py-[17px] px-[92.5px] rounded-[32px] bg-colorTextPrimary">
               Contact Landlord
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* property information */}
+      <section className="w-[1216px] gap-8 m-auto mt-14 relative">
+        <div className="w-[800px] h-[800px] bg-blue-500"></div>
+
+        {/* profile */}
+        <div className="w-[384px] px-[76px] py-[40px] inline-flex flex-col items-center justify-center rounded-[24px] border border-[#EEF1F3] absolute right-0 top-0">
+          <div className="flex flex-col items-center gap-6">
+            <h4 className="text-xl font-semibold leading-[120%] text-colorTextSecondary">
+              Landlord Profile
+            </h4>
+            {/* photo */}
+            <div>
+              <Avatar className="w-[120px] h-[120px]">
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </div>
+
+            {/* ratings */}
+            <div className="flex flex-col items-center gap-2">
+              <h3 className="text-[22px] text-colorTextPrimary font-semibold leading-[120%]">
+                Verv Rooms Limited
+              </h3>
+              <div className="flex items-center">
+                <StarFill width={20} height={18} fill="#50B533" />
+                <p className="text-lg font-[500] text-colorTextPrimary">
+                  5 Star Rated by Tenants
+                </p>
+              </div>
+            </div>
+
+            {/* reply */}
+            <div className="text-center space-y-2">
+              <p className="text-lg text-colorTextSecondary leading-[150%]">
+                Reply Rating: <span className="font-semibold">98%</span>
+              </p>
+              <p className="text-lg text-colorTextSecondary leading-[150%]">
+                Reply time: <span className="font-semibold">2 Days</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
