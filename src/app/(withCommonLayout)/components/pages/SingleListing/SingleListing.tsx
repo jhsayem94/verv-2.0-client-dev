@@ -1,13 +1,24 @@
-import { CalendarIcon, HomeFill, LocationIcon } from "@/assets/icons/icons";
+import {
+  CalendarIcon,
+  FacebookShare,
+  HomeFill,
+  InstagramShare,
+  LinkedinShare,
+  LocationIcon,
+  ReportIcon,
+  TweeterShare,
+  WhatsappShare,
+  YouTubeShare,
+} from "@/assets/icons/icons";
 import VerticalCarousel from "./VerticalCarousel";
 
 const SingleListing = () => {
   return (
-    <section className="h-[973px] bg-[#EEF1F3]">
-      <div className="w-[1216px] h-[786px] bg-blue-300 m-auto">
+    <section className="h-[917px] bg-[#EEF1F3] py-14">
+      <div className="w-[1216px] h-[786px] m-auto bg-red-300">
         {/* basic property information */}
         <div className="mb-6">
-          <p className="text-colorTextSecondary text-lg font-medium mb-[32px]">
+          <p className="text-colorTextSecondary text-lg font-medium mb-6">
             Home / Birmingham / Houses / Grange Road
           </p>
           <div className="flex items-center gap-4">
@@ -60,6 +71,27 @@ const SingleListing = () => {
         </div>
         {/* carousel */}
         <VerticalCarousel />
+
+        {/* share property */}
+        <div className="flex justify-between items-center mt-4">
+          <div className="flex items-center gap-6">
+            <p>Share Property</p>
+            <div className="flex items-center gap-4">
+              <FacebookShare width={40} height={40} fill="#1877F2" />
+              <TweeterShare width={40} height={40} fill="##1DA1F2" />
+              <LinkedinShare width={40} height={40} fill="#2867B2" />
+              <YouTubeShare width={40} height={40} fill="#FF0000" />
+              <InstagramShare width={40} height={40} fill="#F00073" />
+              <WhatsappShare width={40} height={40} fill="#25D366" />
+            </div>
+          </div>
+          <div className="flex items-center gap-1">
+            <ReportIcon width={16} height={14} fill="#56677D" />
+            <p className="text-colorTextSecondary leading-[150%]">
+              Report Listing
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
