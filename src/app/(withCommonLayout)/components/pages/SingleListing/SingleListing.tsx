@@ -1,4 +1,6 @@
 import {
+  BathIcon,
+  BedIcon,
   CalendarIcon,
   CheckCircle,
   FacebookShare,
@@ -7,6 +9,7 @@ import {
   LinkedinShare,
   LocationIcon,
   ReportIcon,
+  SquareIcon,
   StarFill,
   TweeterShare,
   WhatsappShare,
@@ -178,6 +181,7 @@ const SingleListing = () => {
       {/* property information */}
       <section className="w-[1216px] gap-8 m-auto mt-14 relative">
         <div className="w-[800px]">
+          {/* offers */}
           <div className="flex flex-col justify-center gap-8 px-6 py-8 rounded-3xl bg-[#EEF1F3]">
             {/* cashback offer */}
             <div className="flex gap-4">
@@ -220,6 +224,98 @@ const SingleListing = () => {
                 <p className="text-lg text-colorTextPrimary leading-[150%] pt-4">
                   Terms & Conditions apply. See Verv’s website for details.
                 </p>
+              </div>
+            </div>
+          </div>
+
+          {/* summary */}
+          <div className="mt-10">
+            <h2 className="text-2xl text-colorTextPrimary font-semibold leading-[120%]">
+              Summary
+            </h2>
+            <div className="flex gap-[126px] px-8 py-[25px]">
+              {/* left summary */}
+              <div className="w-1/2 space-y-4">
+                {/* bed */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <BedIcon width={24} height={24} stroke="#50B533" />
+                    <p className="text-lg text-colorTextPrimary leading-[150%]">
+                      Bed
+                    </p>
+                  </div>
+                  <p className="text-lg text-colorTextPrimary font-semibold leading-[150%]">
+                    6
+                  </p>
+                </div>
+
+                {/* bath */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <BathIcon width={24} height={24} fill="#50B533" />
+                    <p className="text-lg text-colorTextPrimary leading-[150%]">
+                      Bathroom
+                    </p>
+                  </div>
+                  <p className="text-lg text-colorTextPrimary font-semibold leading-[150%]">
+                    6
+                  </p>
+                </div>
+
+                {/* area */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <SquareIcon width={24} height={24} stroke="#50B533" />
+                    <p className="text-lg text-colorTextPrimary leading-[150%]">
+                      Area
+                    </p>
+                  </div>
+                  <p className="text-lg text-colorTextPrimary font-semibold leading-[150%]">
+                    6
+                  </p>
+                </div>
+              </div>
+
+              {/* right summary */}
+              <div className="w-1/2 space-y-4">
+                {/* bed */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <BedIcon width={24} height={24} stroke="#50B533" />
+                    <p className="text-lg text-colorTextPrimary leading-[150%]">
+                      Bed
+                    </p>
+                  </div>
+                  <p className="text-lg text-colorTextPrimary font-semibold leading-[150%]">
+                    6
+                  </p>
+                </div>
+
+                {/* bath */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <BathIcon width={24} height={24} fill="#50B533" />
+                    <p className="text-lg text-colorTextPrimary leading-[150%]">
+                      Bathroom
+                    </p>
+                  </div>
+                  <p className="text-lg text-colorTextPrimary font-semibold leading-[150%]">
+                    6
+                  </p>
+                </div>
+
+                {/* area */}
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <SquareIcon width={24} height={24} stroke="#50B533" />
+                    <p className="text-lg text-colorTextPrimary leading-[150%]">
+                      Area
+                    </p>
+                  </div>
+                  <p className="text-lg text-colorTextPrimary font-semibold leading-[150%]">
+                    6
+                  </p>
+                </div>
               </div>
             </div>
           </div>
