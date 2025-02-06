@@ -357,41 +357,90 @@ const SingleListing = () => {
             </div>
           </div>
 
-          {/* amenities and highlights */}
+          {/* utilities */}
           <div className="flex gap-[123px] mt-10">
-            {/* amenities */}
-            <div>
-              <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
-                Amenities
-              </h3>
-              <div className="flex flex-col gap-4">
-                <ItemChecked
-                  isChecked={true}
-                  item="Extremely close to the pub"
-                />
-                <ItemChecked isChecked={true} item="6 double bedrooms" />
-                <ItemChecked
-                  isChecked={true}
-                  item="2 shared bathrooms & 1 ensuite"
-                />
-                <ItemChecked isChecked={true} item="Spacious open plan area" />
-                <ItemChecked isChecked={true} item="Dishwasher, dryer & more" />
+            {/* amenities and bills */}
+            <div className="space-y-10">
+              {/* amenities */}
+              <div>
+                <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
+                  Amenities
+                </h3>
+                <div className="flex flex-col gap-4">
+                  <ItemChecked
+                    isChecked={true}
+                    item="Extremely close to the pub"
+                  />
+                  <ItemChecked isChecked={true} item="6 double bedrooms" />
+                  <ItemChecked
+                    isChecked={true}
+                    item="2 shared bathrooms & 1 ensuite"
+                  />
+                  <ItemChecked
+                    isChecked={true}
+                    item="Spacious open plan area"
+                  />
+                  <ItemChecked
+                    isChecked={true}
+                    item="Dishwasher, dryer & more"
+                  />
+                </div>
+              </div>
+
+              {/* Bills */}
+              <div>
+                <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
+                  Bills
+                </h3>
+                <div className="flex flex-col gap-4">
+                  <ItemChecked
+                    isChecked={false}
+                    item="Water close to the pub"
+                  />
+                  <ItemChecked isChecked={false} item="Electricity" />
+                  <ItemChecked isChecked={false} item="Internet" />
+                  <ItemChecked isChecked={false} item="Gas" />
+                </div>
               </div>
             </div>
 
-            {/* highlights */}
-            <div>
-              <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
-                Highlights
-              </h3>
-              <div className="flex flex-col gap-4">
-                <ItemChecked isChecked={true} item="Furnished" />
-                <ItemChecked isChecked={true} item="EPC Rating : C" />
-                <ItemChecked isChecked={false} item="Garden" />
-                <ItemChecked isChecked={false} item="Parking" />
-                <ItemChecked isChecked={false} item="Fireplace" />
+            {/* highlights and Preferences */}
+            <div className="space-y-10">
+              {/* highlights */}
+              <div>
+                <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
+                  Highlights
+                </h3>
+                <div className="flex flex-col gap-4">
+                  <ItemChecked isChecked={true} item="Furnished" />
+                  <ItemChecked isChecked={true} item="EPC Rating : C" />
+                  <ItemChecked isChecked={false} item="Garden" />
+                  <ItemChecked isChecked={false} item="Parking" />
+                  <ItemChecked isChecked={false} item="Fireplace" />
+                </div>
+              </div>
+              {/* Preferences */}
+              <div>
+                <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
+                  Preferences
+                </h3>
+                <div className="flex flex-col gap-4">
+                  <ItemChecked isChecked={true} item="Student Friendly" />
+                  <ItemChecked isChecked={true} item="Families Allowed" />
+                  <ItemChecked isChecked={false} item="Smokers Allowed" />
+                  <ItemChecked isChecked={false} item="Pets Allowed" />
+                  <ItemChecked isChecked={false} item="DSS/LHA Covers Rent" />
+                </div>
               </div>
             </div>
+          </div>
+
+          {/* location */}
+          <div className="mt-10">
+            <h2 className="text-xl font-semibold">
+              This is a location component. Have to work with google location
+              based on the data from the backend
+            </h2>
           </div>
         </div>
 
