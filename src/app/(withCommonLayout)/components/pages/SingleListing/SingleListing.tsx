@@ -319,6 +319,42 @@ const SingleListing = () => {
               </div>
             </div>
           </div>
+
+          {/* description */}
+          <div className="mt-10">
+            <h2 className="text-2xl text-colorTextPrimary font-semibold leading-[120%]">
+              Property Description
+            </h2>
+            <div className="text-lg text-colorTextSecondary leading-[150%] mt-6 space-y-4">
+              <p>
+                6 bedroom & 3 bathroom student property available from
+                01/07/2025 until 30/06/2026 with a fixed deposit of £115 per
+                person priced at £499
+              </p>
+              <p>
+                £115 per person per week (non-ensuite rooms)
+                <br />
+                £125 per person per week (ensuite room)
+              </p>
+              <p>
+                For added convenience, we offer bills inclusive packages
+                ensuring utility expenses are covered hassle-free. Please speak
+                to us for further details.
+              </p>
+              <p>
+                Call us now or enquire online to book your viewing while
+                it&apos;s still available!
+              </p>
+              <p>Property ID: L-PS581</p>
+              <p>
+                The landlord/letting agent would like to let this property as a
+                whole. Most commonly to be offered on a joint tenancy agreement
+                though some landlords may be able to offer individual tenancy
+                agreements. If the property is for a single dweller an
+                individual tenancy applies.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* profile */}
