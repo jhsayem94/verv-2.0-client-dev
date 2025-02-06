@@ -18,6 +18,7 @@ import {
 import VerticalCarousel from "./VerticalCarousel";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ItemChecked from "../../UI/ItemChecked/ItemChecked";
 
 const SingleListing = () => {
   return (
@@ -353,6 +354,43 @@ const SingleListing = () => {
                 agreements. If the property is for a single dweller an
                 individual tenancy applies.
               </p>
+            </div>
+          </div>
+
+          {/* amenities and highlights */}
+          <div className="flex gap-[123px] mt-10">
+            {/* amenities */}
+            <div>
+              <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
+                Amenities
+              </h3>
+              <div className="flex flex-col gap-4">
+                <ItemChecked
+                  isChecked={true}
+                  item="Extremely close to the pub"
+                />
+                <ItemChecked isChecked={true} item="6 double bedrooms" />
+                <ItemChecked
+                  isChecked={true}
+                  item="2 shared bathrooms & 1 ensuite"
+                />
+                <ItemChecked isChecked={true} item="Spacious open plan area" />
+                <ItemChecked isChecked={true} item="Dishwasher, dryer & more" />
+              </div>
+            </div>
+
+            {/* highlights */}
+            <div>
+              <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
+                Highlights
+              </h3>
+              <div className="flex flex-col gap-4">
+                <ItemChecked isChecked={true} item="Furnished" />
+                <ItemChecked isChecked={true} item="EPC Rating : C" />
+                <ItemChecked isChecked={false} item="Garden" />
+                <ItemChecked isChecked={false} item="Parking" />
+                <ItemChecked isChecked={false} item="Fireplace" />
+              </div>
             </div>
           </div>
         </div>
