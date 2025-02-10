@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { listingSchema } from "@/schema/listing.schema";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
-// import { z } from "zod";
 
 const propertyOptionSchema = listingSchema.pick({
   propertyOption: true,
@@ -30,36 +29,71 @@ const PropertyOptions = () => {
   };
 
   return (
-    <section className="w-[1216px] m-auto mt-14 space-y-5 bg-red-400">
+    <section className="w-[1216px] m-auto mt-14 space-y-5">
       <h4 className="text-[24px] font-semibold text-colorTextSecondary leading-[32px]">
         How do you want to let the property?
       </h4>
-      <div className="px-6 py-8 bg-blue-300">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="max-w-md p-6 bg-white shadow-md rounded-xl space-y-4"
-        >
-          <h2 className="text-lg font-semibold">Select Property Type</h2>
+      <div className="flex flex-col items-start gap-6 px-6 py-8 rounded-[12px] bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10)]">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
+          <div className="h-[132px] flex items-center gap-6 rounded-2xl border border-[#EEF1F3] pl-8 pr-6 py-6">
+            <div className="w-6">
+              <input
+                type="radio"
+                value="Whole property"
+                {...register("propertyOption")}
+                className="w-6 h-6 accent-green-600"
+              />
+            </div>
+            <div>
+              <h5 className="text-lg font-semibold text-colorTextPrimary">
+                Whole property
+              </h5>
+              <p className="text-lg text-colorTextPrimary leading-[150%]">
+                Most commonly offered to a group of students on a joint tenancy
+                agreement. If the property is for a single dweller, an
+                individual tenancy applies.
+              </p>
+            </div>
+          </div>
 
-          <div className="space-y-2">
-            {[
-              "Whole property",
-              "Individual rooms",
-              "Either whole property or individual rooms",
-            ].map((option) => (
-              <label
-                key={option}
-                className="flex items-center space-x-2 cursor-pointer"
-              >
-                <input
-                  type="radio"
-                  value={option}
-                  {...register("propertyOption")}
-                  className="w-4 h-4"
-                />
-                <span>{option}</span>
-              </label>
-            ))}
+          <div className="h-[132px] flex items-center gap-6 rounded-2xl border border-[#EEF1F3] pl-8 pr-6 py-6">
+            <div className="w-6">
+              <input
+                type="radio"
+                value="Individual rooms"
+                {...register("propertyOption")}
+                className="w-6 h-6 accent-green-600"
+              />
+            </div>
+            <div>
+              <h5 className="text-lg font-semibold text-colorTextPrimary">
+                Individual rooms
+              </h5>
+              <p className="text-lg text-colorTextPrimary leading-[150%]">
+                Rooms in this property can be let by individual students on an
+                individual tenancy agreement.
+              </p>
+            </div>
+          </div>
+
+          <div className="h-[132px] flex items-center gap-6 rounded-2xl border border-[#EEF1F3] pl-8 pr-6 py-6">
+            <div className="w-6">
+              <input
+                type="radio"
+                value="Either whole property or individual rooms"
+                {...register("propertyOption")}
+                className="w-6 h-6 accent-green-600"
+              />
+            </div>
+            <div>
+              <h5 className="text-lg font-semibold text-colorTextPrimary">
+                Either whole property or individual rooms
+              </h5>
+              <p className="text-lg text-colorTextPrimary leading-[150%]">
+                Offered to groups and individual students, on a joint or
+                individual tenancy agreement.
+              </p>
+            </div>
           </div>
 
           {errors.propertyOption && (
