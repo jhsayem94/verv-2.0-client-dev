@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { listingSchema } from "@/schema/listing.schema";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 const propertyOptionSchema = listingSchema.pick({
   propertyOption: true,
@@ -15,6 +16,8 @@ const propertyOptionSchema = listingSchema.pick({
 type TPropertyOption = z.infer<typeof propertyOptionSchema>;
 
 const PropertyOptions = () => {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -26,6 +29,7 @@ const PropertyOptions = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
+    router.push("property-details");
   };
 
   return (
@@ -102,7 +106,7 @@ const PropertyOptions = () => {
             </p>
           )}
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Next</Button>
         </form>
       </div>
     </section>
