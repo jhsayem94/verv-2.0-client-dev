@@ -1,15 +1,12 @@
+import PropertyOptions from "../../components/pages/Listing/PropertyOptions";
 import ListingTab from "../../components/Shared/Tabs/ListingTab";
 
 const page = () => {
   return (
-    <div>
-      <ListingTab
-        isRoom={true}
-        // isDetails={true}
-        // isPreview={true}
-        // isPublish={true}
-      />
-    </div>
+    <>
+      <ListingTab isRoom={true} />
+      <PropertyOptions />
+    </>
   );
 };
 

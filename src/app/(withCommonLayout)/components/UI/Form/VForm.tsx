@@ -4,7 +4,7 @@ import { IFormConfig, IFormProps } from "@/types";
 import { FormProvider, useForm } from "react-hook-form";
 
 const VForm = ({ children, onSubmit, defaultValues, resolver }: IFormProps) => {
-  const formConfig: IFormConfig = {};
+  const formConfig: Partial<IFormConfig> = {};
 
   if (!!defaultValues) {
     formConfig["defaultValues"] = defaultValues;
