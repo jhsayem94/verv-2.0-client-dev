@@ -9,7 +9,6 @@ const page = () => {
         // isPreview={true}
         // isPublish={true}
       />
-      ;<h2>This is add property page</h2>
     </div>
   );
 };
