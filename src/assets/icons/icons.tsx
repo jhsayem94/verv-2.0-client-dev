@@ -811,3 +811,63 @@ export const CrossIcon: React.FC<IconSvgProps> = ({
     />
   </svg>
 );
+
+export const ListingFullArrow: React.FC<IconSvgProps> = ({
+  width,
+  height,
+  fill,
+  ...props
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 260 58"
+    fill="none"
+  >
+    <path
+      d="M0 29V2C0 0.895431 0.895423 0 1.99999 0H240.039C240.716 0 241.346 0.341985 241.715 0.908959L259.29 27.909C259.722 28.5723 259.722 29.4277 259.29 30.091L241.715 57.091C241.346 57.658 240.716 58 240.039 58H2C0.895431 58 0 57.1046 0 56V29Z"
+      fill={fill}
+    />
+  </svg>
+);
+
+export const ListingArrowTip: React.FC<IconSvgProps> = ({
+  width,
+  height,
+  fill,
+  ...props
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 23 58"
+    fill="none"
+  >
+    <path
+      d="M1.79766 0H4.44372C4.78962 0 5.11095 0.178751 5.29336 0.472637L22.6818 28.4874C22.8775 28.8027 22.8825 29.2004 22.6949 29.5205L6.28975 57.5057C6.11027 57.8119 5.78196 58 5.42705 58H2.74536C1.97262 58 1.49187 57.1609 1.88266 56.4943L17.6949 29.5205C17.8825 29.2004 17.8775 28.8027 17.6818 28.4874L0.948018 1.52736C0.534544 0.861209 1.01362 0 1.79766 0Z"
+      fill={fill}
+    />
+  </svg>
+);
+
+export const ListingHalfArrow: React.FC<IconSvgProps> = ({
+  width,
+  height,
+  fill,
+  ...props
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 259 58"
+    fill="none"
+  >
+    <path
+      d="M15.8053 27.97L0.820549 3.03004C0.019622 1.69701 0.979768 0 2.5349 0H239.039C239.716 0 240.346 0.341986 240.715 0.90896L258.29 27.909C258.722 28.5723 258.722 29.4277 258.29 30.091L240.715 57.091C240.346 57.658 239.716 58 239.039 58H2.5349C0.979769 58 0.019623 56.303 0.82055 54.97L15.8053 30.03C16.1861 29.3962 16.1861 28.6038 15.8053 27.97Z"
+      fill={fill}
+    />
+  </svg>
+);

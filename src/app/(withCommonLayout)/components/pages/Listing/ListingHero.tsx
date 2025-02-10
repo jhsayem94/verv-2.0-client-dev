@@ -7,7 +7,7 @@ const ListingHero = () => {
     backgroundColor: "lightcyan",
   };
   return (
-    <section className="w-full bg-[#EEF1F3] py-[100px]">
+    <section className="w-full bg-[#EEF1F3] py-[100px] mb-[100px]">
       <div className="w-[1216px] flex items-center gap-[136px] m-auto">
         {/* description */}
         <div className="w-[488px] flex flex-col items-start gap-[36px]">
