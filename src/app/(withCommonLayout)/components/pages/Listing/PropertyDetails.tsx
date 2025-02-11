@@ -8,6 +8,7 @@ import InputField from "../../UI/Form/InputField";
 // import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "@/assets/icons/icons";
+import SelectField from "../../UI/Form/SelectField";
 
 const propertyDetailsSchema = listingSchema.pick({
   postcode: true,
@@ -15,7 +16,7 @@ const propertyDetailsSchema = listingSchema.pick({
   address: true,
   address2: true,
   town: true,
-  //   propertyType: true,
+  propertyType: true,
   //   bedrooms: true,
   //   bathrooms: true,
   //   furnishingOptions: true,
@@ -34,6 +35,7 @@ const PropertyDetails = () => {
   //   const router = useRouter();
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -105,6 +107,23 @@ const PropertyDetails = () => {
               placeholder="Enter your town"
               register={register}
               errors={errors}
+            />
+
+            <SelectField
+              registerName="propertyType"
+              label="Property Type"
+              control={control} // Pass the correctly typed control
+              errors={errors}
+              options={[
+                {
+                  label: "Residential",
+                  options: [{ value: "Flat", label: "Flat" }],
+                },
+                {
+                  label: "Commercial",
+                  options: [{ value: "Bedsit", label: "Bedsit" }],
+                },
+              ]}
             />
           </div>
         </div>

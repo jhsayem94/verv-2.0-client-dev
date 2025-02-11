@@ -2,8 +2,11 @@
 import { ReactNode } from "react";
 import { ZodType } from "zod";
 import {
+  Control,
   DefaultValues,
   FieldErrors,
+  FieldValues,
+  Path,
   SubmitHandler,
   UseFormRegister,
 } from "react-hook-form";
@@ -67,4 +70,18 @@ export interface InputFieldProps {
   type: string;
   register: UseFormRegister<any>;
   errors?: FieldErrors<any>;
+}
+
+interface IOptionGroup {
+  label: string;
+  options: { value: string; label: string }[];
+}
+
+export interface ISelectFieldProps<T extends FieldValues> {
+  className?: string;
+  registerName: Path<T>; // Ensures correct key type from the form schema
+  label?: string;
+  control: Control<T>; // Correctly typed control
+  errors?: FieldErrors<T>;
+  options: IOptionGroup[];
 }
