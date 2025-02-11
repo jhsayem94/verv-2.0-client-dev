@@ -1,3 +1,5 @@
+"use client";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +13,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CirclePerson, DownArrow, HomeIcon } from "@/assets/icons/icons";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
+
   return (
     <nav className="py-6 bg-white shadow-[0px_4px_4px_rgba(0,0,0,0.10)] hidden md:block sticky top-0 z-20">
       <div className="w-[1216px] m-auto flex justify-between items-center text-[#314660]">
@@ -104,7 +109,10 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-            <Button className="text-lg font-semibold rounded-[32px] bg-[#50B533] w-[180px] h-[56px] py-2 px-4">
+            <Button
+              className="text-lg font-semibold rounded-[32px] bg-[#50B533] w-[180px] h-[56px] py-2 px-4"
+              onClick={() => router.push("listing/add-property")}
+            >
               <HomeIcon width={25} height={24} />
               Add Listing
             </Button>
