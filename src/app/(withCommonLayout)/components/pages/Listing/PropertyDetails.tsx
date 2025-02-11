@@ -31,6 +31,17 @@ const propertyDetailsSchema = listingSchema.pick({
 
 type TPropertyDetails = z.infer<typeof propertyDetailsSchema>;
 
+const options = [
+  {
+    label: "Residential",
+    options: [{ value: "Flat", label: "Flat" }],
+  },
+  {
+    label: "Commercial",
+    options: [{ value: "Bedsit", label: "Bedsit" }],
+  },
+];
+
 const PropertyDetails = () => {
   //   const router = useRouter();
 
@@ -51,12 +62,12 @@ const PropertyDetails = () => {
 
   return (
     <section className="w-[1216px] m-auto mt-14">
-      <h2 className="text-[24px] font-semibold text-colorTextSecondary leading-[32px]">
+      <h2 className="text-[24px] font-semibold text-colorTextSecondary mb-5 leading-[32px]">
         Property / Room Details
       </h2>
       {/* form */}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-10 p-28 rounded-xl bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
+        <div className="flex gap-10 p-7 rounded-xl bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
           <div className="space-y-8 w-1/2">
             <div className="flex items-end self-stretch gap-1">
               <InputField
@@ -114,16 +125,7 @@ const PropertyDetails = () => {
               label="Property Type"
               control={control} // Pass the correctly typed control
               errors={errors}
-              options={[
-                {
-                  label: "Residential",
-                  options: [{ value: "Flat", label: "Flat" }],
-                },
-                {
-                  label: "Commercial",
-                  options: [{ value: "Bedsit", label: "Bedsit" }],
-                },
-              ]}
+              options={options}
             />
           </div>
         </div>
