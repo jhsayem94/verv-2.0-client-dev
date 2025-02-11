@@ -60,6 +60,7 @@ export interface IFormProps extends IFormConfig {
 }
 
 export interface InputFieldProps {
+  className?: string;
   registerName: string;
   label?: string;
   placeholder?: string;

@@ -7,13 +7,14 @@ import { z } from "zod";
 import InputField from "../../UI/Form/InputField";
 // import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { SearchIcon } from "@/assets/icons/icons";
 
 const propertyDetailsSchema = listingSchema.pick({
   postcode: true,
   houseNumber: true,
-  //   address: true,
-  //   address2: true,
-  //   town: true,
+  address: true,
+  address2: true,
+  town: true,
   //   propertyType: true,
   //   bedrooms: true,
   //   bathrooms: true,
@@ -53,23 +54,59 @@ const PropertyDetails = () => {
       </h2>
       {/* form */}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="p-28 rounded-xl bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
-          <InputField
-            registerName="postcode"
-            label="Postcode"
-            type="text"
-            placeholder="Enter your postcode"
-            register={register}
-            errors={errors}
-          />
-          <InputField
-            registerName="houseNumber"
-            label="Flat or House Number (kept private)"
-            type="text"
-            placeholder="Enter your flat or house number"
-            register={register}
-            errors={errors}
-          />
+        <div className="flex gap-10 p-28 rounded-xl bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
+          <div className="space-y-8 w-1/2">
+            <div className="flex items-end self-stretch gap-1">
+              <InputField
+                registerName="postcode"
+                label="Postcode"
+                type="text"
+                placeholder="Enter your postcode"
+                register={register}
+                errors={errors}
+                className="w-[344px]"
+              />
+              <Button className="bg-colorButton">
+                <SearchIcon />
+                Find Address
+              </Button>
+            </div>
+            <InputField
+              registerName="address"
+              label="Address"
+              type="text"
+              placeholder="Enter your address"
+              register={register}
+              errors={errors}
+            />
+            <InputField
+              registerName="address2"
+              label="Address Line 2 (Optional)"
+              type="text"
+              placeholder="Enter your another address"
+              register={register}
+              errors={errors}
+            />
+            <InputField
+              registerName="houseNumber"
+              label="Flat or House Number (kept private)"
+              type="text"
+              placeholder="Enter your flat or house number"
+              register={register}
+              errors={errors}
+            />
+          </div>
+
+          <div className="space-y-8 w-1/2">
+            <InputField
+              registerName="town"
+              label="Town"
+              type="text"
+              placeholder="Enter your town"
+              register={register}
+              errors={errors}
+            />
+          </div>
         </div>
 
         <Button type="submit">Submit</Button>

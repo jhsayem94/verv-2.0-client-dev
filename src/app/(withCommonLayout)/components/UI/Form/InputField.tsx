@@ -3,18 +3,9 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { InputFieldProps } from "@/types";
-// import { FieldErrors, UseFormRegister } from "react-hook-form";
-
-// interface InputFieldProps {
-//   registerName: string;
-//   label?: string;
-//   placeholder?: string;
-//   type: string;
-//   register: UseFormRegister<any>;
-//   errors?: FieldErrors<any>;
-// }
 
 const InputField: React.FC<InputFieldProps> = ({
+  className,
   registerName,
   label,
   placeholder,
@@ -23,7 +14,7 @@ const InputField: React.FC<InputFieldProps> = ({
   errors,
 }) => {
   return (
-    <div>
+    <div className={className}>
       <div>
         {label && <Label htmlFor={registerName}>{label}</Label>}
         <Input
