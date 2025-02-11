@@ -17,8 +17,8 @@ const propertyDetailsSchema = listingSchema.pick({
   address2: true,
   town: true,
   propertyType: true,
-  //   bedrooms: true,
-  //   bathrooms: true,
+  bedrooms: true,
+  bathrooms: true,
   //   furnishingOptions: true,
   //   monthlyRent: true,
   //   minimumTenancy: true,
@@ -119,7 +119,6 @@ const PropertyDetails = () => {
               register={register}
               errors={errors}
             />
-
             <SelectField
               registerName="propertyType"
               label="Property Type"
@@ -127,6 +126,28 @@ const PropertyDetails = () => {
               errors={errors}
               options={options}
             />
+
+            <div className="flex items-center gap-4">
+              <InputField
+                registerName="bedrooms"
+                label="Number of Bedrooms"
+                type="text"
+                placeholder="Bedrooms"
+                register={register}
+                errors={errors}
+                className="w-1/2"
+              />
+
+              <InputField
+                registerName="bathrooms"
+                label="Number of Bathrooms"
+                type="text"
+                placeholder="Bathrooms"
+                register={register}
+                errors={errors}
+                className="w-1/2"
+              />
+            </div>
           </div>
         </div>
 

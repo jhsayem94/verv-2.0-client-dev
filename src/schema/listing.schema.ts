@@ -25,12 +25,16 @@ export const listingSchema = z.object({
   propertyType: z.enum(["Flat", "Bedsit"], {
     required_error: "Please select a type",
   }),
-  bedrooms: z.string({
-    required_error: "Please enter the number of bedrooms",
-  }),
-  bathrooms: z.string({
-    required_error: "Please enter the number of bathrooms",
-  }),
+  bedrooms: z
+    .string({
+      required_error: "Please enter the number of bedrooms",
+    })
+    .min(1, "Number of bedrooms is required"),
+  bathrooms: z
+    .string({
+      required_error: "Please enter the number of bathrooms",
+    })
+    .min(1, "Number of bathrooms is required"),
   furnishingOptions: z.enum(["Furnished", "Unfurnished", "Choice"], {
     required_error: "Please select an option",
   }),
