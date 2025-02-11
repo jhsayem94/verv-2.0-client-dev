@@ -1,10 +1,13 @@
+// "use client";
+
+import PropertyDetails from "../../components/pages/Listing/PropertyDetails";
 import ListingTab from "../../components/Shared/Tabs/ListingTab";
 
 const page = () => {
   return (
     <>
       <ListingTab isDetails={true} />
-      <h2>This is property details page</h2>
+      <PropertyDetails />
     </>
   );
 };

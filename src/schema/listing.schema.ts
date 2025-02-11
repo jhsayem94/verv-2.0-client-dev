@@ -10,10 +10,15 @@ export const listingSchema = z.object({
     { required_error: "Please select an option" }
   ),
 
-  postcode: z.string({ required_error: "Please enter a postcode" }),
-  houseNumber: z.string({
-    required_error: "Please enter flat or house number",
-  }),
+  postcode: z
+    .string({ required_error: "Please enter a postcode" })
+    .min(1, "Postcode is required"),
+  houseNumber: z
+    .string({
+      required_error: "Please enter flat or house number",
+    })
+    .min(1, "Postcode is required"),
+  address: z.string({ required_error: "Please enter the address" }),
   address2: z.string().optional(),
   propertyType: z.enum(["Flat", "Bedsit"], {
     required_error: "Please select a type",

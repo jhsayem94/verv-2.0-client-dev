@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from "react";
 import { ZodType } from "zod";
-import { DefaultValues, SubmitHandler } from "react-hook-form";
+import {
+  DefaultValues,
+  FieldErrors,
+  SubmitHandler,
+  UseFormRegister,
+} from "react-hook-form";
 
 export interface ITrustPilot {
   showGrow?: boolean;
@@ -52,4 +57,13 @@ export interface IFormConfig {
 export interface IFormProps extends IFormConfig {
   children: ReactNode;
   onSubmit: SubmitHandler<any>;
+}
+
+export interface InputFieldProps {
+  registerName: string;
+  label?: string;
+  placeholder?: string;
+  type: string;
+  register: UseFormRegister<any>;
+  errors?: FieldErrors<any>;
 }
