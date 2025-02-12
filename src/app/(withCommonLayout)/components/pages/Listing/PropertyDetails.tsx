@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/button";
 import { SearchIcon } from "@/assets/icons/icons";
 import SelectField from "../../UI/Form/SelectField";
 import CheckboxField from "../../UI/Form/CheckboxField";
+import { Calendar } from "@/components/ui/calendar";
+import { useState } from "react";
+import { datePicker } from "@/helpers/datePicker";
 
 const propertyDetailsSchema = listingSchema.pick({
   postcode: true,
@@ -67,6 +70,10 @@ const depositAmount = [
 
 const PropertyDetails = () => {
   //   const router = useRouter();
+  const [date, setDate] = useState<Date | undefined>(new Date());
+
+  const formattedDate = datePicker(date);
+  console.log(formattedDate);
 
   const {
     control,
@@ -234,6 +241,15 @@ const PropertyDetails = () => {
                   placeholder="33"
                   register={register}
                   errors={errors}
+                />
+              </div>
+              <div className="">
+                <p>Earliest Move In Date</p>
+                <Calendar
+                  mode="single"
+                  selected={date}
+                  onSelect={setDate}
+                  className="rounded-md border shadow"
                 />
               </div>
             </div>

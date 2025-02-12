@@ -1,20 +1,14 @@
-import { Controller, Control, FieldValues, Path } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-
-interface CheckboxFieldProps<T extends FieldValues> {
-  registerName: Path<T>;
-  label: string;
-  control: Control<T>;
-  //   errors?: FieldErrors<T>;
-}
+import { ICheckboxFieldProps } from "@/types";
 
 const CheckboxField = <T extends FieldValues>({
   registerName,
   label,
   control,
 }: //   errors,
-CheckboxFieldProps<T>) => {
+ICheckboxFieldProps<T>) => {
   return (
     <div className="flex items-center space-x-4">
       <Controller

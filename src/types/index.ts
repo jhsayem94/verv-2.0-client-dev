@@ -85,3 +85,10 @@ export interface ISelectFieldProps<T extends FieldValues> {
   errors?: FieldErrors<T>;
   options: IOptionGroup[];
 }
+
+export interface ICheckboxFieldProps<T extends FieldValues> {
+  registerName: Path<T>;
+  label: string;
+  control: Control<T>;
+  //   errors?: FieldErrors<T>;
+}
