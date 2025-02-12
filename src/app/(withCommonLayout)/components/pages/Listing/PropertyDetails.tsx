@@ -50,11 +50,11 @@ const PropertyDetails = () => {
     <section className="w-[1216px] m-auto mt-14">
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* room details */}
-        <div>
-          <h2 className="text-[24px] font-semibold text-colorTextSecondary mb-5 leading-[32px]">
-            Property / Room Details
-          </h2>
-          <div className="flex gap-10 p-7 rounded-xl bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
+        <h2 className="text-[24px] font-semibold text-colorTextSecondary mb-5 leading-[32px]">
+          Property / Room Details
+        </h2>
+        <div className="p-7 rounded-xl bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
+          <div className="flex gap-10">
             <div className="space-y-8 w-1/2">
               <div className="flex items-end self-stretch gap-1">
                 <InputField
@@ -142,6 +142,26 @@ const PropertyDetails = () => {
                 errors={errors}
                 options={furnishedOptions}
               />
+            </div>
+          </div>
+
+          {/* property details */}
+          <div className="mt-12">
+            <div className="flex justify-between items-center">
+              <div className="w-[700px] space-y-3">
+                <h3 className="text-xl text-colorTextSecondary font-semibold leading-[30px]">
+                  Property Description{" "}
+                </h3>
+                <p className="text-colorTextSecondary leading-[24px]">
+                  Highlight what makes your property unique! Include details
+                  like the number of rooms, special features, nearby amenities,
+                  and transport links. Make sure your description is clear,
+                  friendly, and inviting to attract the right tenants.
+                </p>
+              </div>
+              <Button className="px-4 py-2 text-[#50B533] font-semibold border border-[#B4DFA7] rounded-[10px] bg-[#EEF8EB]">
+                Generate Smart Description
+              </Button>
             </div>
           </div>
         </div>

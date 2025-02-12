@@ -106,7 +106,9 @@ const PropertyOptions = () => {
             </p>
           )}
 
-          <Button type="submit">Next</Button>
+          <Button type="submit" className="font-semibold bg-colorButton">
+            Save and Continue
+          </Button>
         </form>
       </div>
     </section>

@@ -111,7 +111,7 @@ const Navbar = () => {
             </ul>
             <Button
               className="text-lg font-semibold rounded-[32px] bg-[#50B533] w-[180px] h-[56px] py-2 px-4"
-              onClick={() => router.push("listing/add-property")}
+              onClick={() => router.push("/listing/add-property")}
             >
               <HomeIcon width={25} height={24} />
               Add Listing
