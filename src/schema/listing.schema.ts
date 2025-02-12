@@ -44,19 +44,29 @@ export const listingSchema = z.object({
   propertyDescription: z.string({
     required_error: "Please add a description",
   }),
-  monthlyRent: z.string({ required_error: "Please add a monthly rent" }),
-  minimumTenancy: z.string({
-    required_error: "Please enter the minimum number of tenancy",
-  }),
-  weeklyRent: z.string({
-    required_error: "Please add a weekly rent",
-  }),
-  maximumTenancy: z.string({
-    required_error: "Please enter the maximum number of tenancy",
-  }),
-  depositAmount: z.string({
-    required_error: "Please enter an deposit amount",
-  }),
+  monthlyRent: z
+    .string({ required_error: "Please add a monthly rent" })
+    .min(1, "Monthly Rent is required"),
+  minimumTenancy: z
+    .string({
+      required_error: "Please enter the minimum number of tenancy",
+    })
+    .min(1, "Minimum Number is required"),
+  weeklyRent: z
+    .string({
+      required_error: "Please add a weekly rent",
+    })
+    .min(1, "Weekly Rent is required"),
+  maximumTenancy: z
+    .string({
+      required_error: "Please enter the maximum number of tenancy",
+    })
+    .min(1, "Maximum Number is required"),
+  depositAmount: z
+    .string({
+      required_error: "Please enter an deposit amount",
+    })
+    .min(1, "Deposit Amount is required"),
   billsIncluded: z.boolean().default(false),
   gardenAccess: z.boolean().default(false),
 });
