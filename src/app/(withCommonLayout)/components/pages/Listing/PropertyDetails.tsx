@@ -15,39 +15,11 @@ import CheckboxField from "../../UI/Form/CheckboxField";
 import { Calendar } from "@/components/ui/calendar";
 import { useState } from "react";
 import { datePicker } from "@/helpers/datePicker";
-
-const options = [
-  {
-    label: "Residential",
-    options: [{ value: "Flat", label: "Flat" }],
-  },
-  {
-    label: "Commercial",
-    options: [{ value: "Bedsit", label: "Bedsit" }],
-  },
-];
-
-const furnishedOptions = [
-  {
-    label: "Options",
-    options: [
-      { value: "Furnished", label: "Furnished" },
-      { value: "Unfurnished", label: "Unfurnished" },
-      { value: "Choice", label: "Choice" },
-    ],
-  },
-];
-
-const depositAmount = [
-  {
-    label: "Amount",
-    options: [
-      { value: "2 Weeks Rent", label: "2 Weeks Rent" },
-      { value: "Monthly Rent", label: "Monthly Rent" },
-      { value: "Choice", label: "Choice" },
-    ],
-  },
-];
+import {
+  depositAmount,
+  furnishedOptions,
+  propertyTypeOptions,
+} from "./constants";
 
 const PropertyDetails = () => {
   //   const router = useRouter();
@@ -139,7 +111,7 @@ const PropertyDetails = () => {
                 label="Property Type"
                 control={control} // Pass the correctly typed control
                 errors={errors}
-                options={options}
+                options={propertyTypeOptions}
               />
 
               <div className="flex items-center gap-4">
