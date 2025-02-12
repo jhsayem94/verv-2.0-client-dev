@@ -72,3 +72,24 @@ export const listingSchema = z.object({
 });
 
 export type TListingSchema = z.infer<typeof listingSchema>;
+
+export const propertyDetailsSchema = listingSchema.pick({
+  postcode: true,
+  houseNumber: true,
+  address: true,
+  address2: true,
+  town: true,
+  propertyType: true,
+  bedrooms: true,
+  bathrooms: true,
+  furnishingOptions: true,
+  monthlyRent: true,
+  minimumTenancy: true,
+  weeklyRent: true,
+  maximumTenancy: true,
+  depositAmount: true,
+  billsIncluded: true,
+  gardenAccess: true,
+});
+
+export type TPropertyDetails = z.infer<typeof propertyDetailsSchema>;

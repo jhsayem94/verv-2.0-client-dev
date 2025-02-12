@@ -1,9 +1,11 @@
 "use client";
 
-import { listingSchema } from "@/schema/listing.schema";
+import {
+  propertyDetailsSchema,
+  TPropertyDetails,
+} from "@/schema/listing.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { z } from "zod";
 import InputField from "../../UI/Form/InputField";
 // import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -13,27 +15,6 @@ import CheckboxField from "../../UI/Form/CheckboxField";
 import { Calendar } from "@/components/ui/calendar";
 import { useState } from "react";
 import { datePicker } from "@/helpers/datePicker";
-
-const propertyDetailsSchema = listingSchema.pick({
-  postcode: true,
-  houseNumber: true,
-  address: true,
-  address2: true,
-  town: true,
-  propertyType: true,
-  bedrooms: true,
-  bathrooms: true,
-  furnishingOptions: true,
-  monthlyRent: true,
-  minimumTenancy: true,
-  weeklyRent: true,
-  maximumTenancy: true,
-  depositAmount: true,
-  billsIncluded: true,
-  gardenAccess: true,
-});
-
-type TPropertyDetails = z.infer<typeof propertyDetailsSchema>;
 
 const options = [
   {
