@@ -316,10 +316,43 @@ const PropertyDetails = () => {
           </h2>
           <div className="p-11 rounded-xl shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
             <ImageUploader />
+            <div className="mt-6">
+              <p className="text-colorTextSecondary font-medium leading-[24px]">
+                Optional: Add YouTube share URL{" "}
+              </p>
+              <InputField
+                registerName="youtubeUrl"
+                // label="Postcode"
+                type="text"
+                placeholder="https://"
+                register={register}
+                errors={errors}
+                className="w-[344px]"
+              />
+            </div>
           </div>
         </div>
 
-        <Button type="submit">Submit</Button>
+        <div className="flex justify-center items-center gap-3 mt-10">
+          <Button
+            type="submit"
+            className="text-white text-sm font-medium leading-[20px] rounded-[8px] bg-colorButton px-6 py-2"
+          >
+            Submit & Preview
+          </Button>
+          <Button
+            type="button"
+            className="text-colorButton border border-[#B4DFA7] bg-[#EEF8EB] px-7 py-2"
+          >
+            Save
+          </Button>
+          <Button
+            type="button"
+            className="text-colorButton border border-[#B4DFA7] bg-[#EEF8EB] px-7 py-2"
+          >
+            Reset
+          </Button>
+        </div>
       </form>
     </section>
   );

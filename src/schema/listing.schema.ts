@@ -74,6 +74,7 @@ export const listingSchema = z.object({
   gardenAccess: z.boolean().default(false),
   remoteVideoViewing: z.boolean().default(false),
   viewingDescription: z.string().optional(),
+  youtubeUrl: z.string().optional(),
 });
 
 export type TListingSchema = z.infer<typeof listingSchema>;
@@ -98,6 +99,7 @@ export const propertyDetailsSchema = listingSchema.pick({
   gardenAccess: true,
   remoteVideoViewing: true,
   viewingDescription: true,
+  youtubeUrl: true,
 });
 
 export type TPropertyDetails = z.infer<typeof propertyDetailsSchema>;
