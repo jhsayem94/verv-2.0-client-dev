@@ -72,6 +72,7 @@ export const listingSchema = z.object({
     .min(1, "Deposit Amount is required"),
   billsIncluded: z.boolean().default(false),
   gardenAccess: z.boolean().default(false),
+  remoteVideoViewing: z.boolean().default(false),
   viewingDescription: z.string().optional(),
 });
 
@@ -95,6 +96,7 @@ export const propertyDetailsSchema = listingSchema.pick({
   depositAmount: true,
   billsIncluded: true,
   gardenAccess: true,
+  remoteVideoViewing: true,
   viewingDescription: true,
 });
 

@@ -39,6 +39,7 @@ const PropertyDetails = () => {
     defaultValues: {
       billsIncluded: false,
       gardenAccess: false,
+      remoteVideoViewing: false,
     },
   });
 
@@ -294,6 +295,27 @@ const PropertyDetails = () => {
             errors={errors}
           />
         </div>
+        {/* remote viewing */}
+        <div className="mt-5 space-y-5">
+          <p className="text-colorTextSecondary leading-[24px]">
+            Let tenants know when they can view the property by sharing your
+            availability below.
+          </p>
+          <CheckboxField
+            registerName="remoteVideoViewing"
+            label="Remote Video Viewings"
+            control={control}
+          />
+        </div>
+
+        {/* photos and videos */}
+        <div className="mt-12 space-y-5">
+          <h2 className="text-[24px] font-semibold text-colorTextSecondary leading-[32px]">
+            Photos & Videos
+          </h2>
+          <div></div>
+        </div>
+
         <Button type="submit">Submit</Button>
       </form>
     </section>
