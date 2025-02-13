@@ -21,6 +21,7 @@ import {
   propertyTypeOptions,
 } from "./constants";
 import TextEditor from "../../UI/TextEditor/TextEditor";
+import ImageUploader from "../../UI/ImageUploader/ImageUploader";
 
 const PropertyDetails = () => {
   //   const router = useRouter();
@@ -313,7 +314,9 @@ const PropertyDetails = () => {
           <h2 className="text-[24px] font-semibold text-colorTextSecondary leading-[32px]">
             Photos & Videos
           </h2>
-          <div></div>
+          <div className="p-11 rounded-xl shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
+            <ImageUploader />
+          </div>
         </div>
 
         <Button type="submit">Submit</Button>
