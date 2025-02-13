@@ -41,9 +41,12 @@ export const listingSchema = z.object({
   town: z
     .string({ required_error: "Please enter a town" })
     .min(1, "Town is required"),
-  propertyDescription: z.string({
-    required_error: "Please add a description",
-  }),
+  description: z
+    .string()
+    .min(1, "Description is required")
+    .refine((val) => val.replace(/<(.|\n)*?>/g, "").trim() !== "", {
+      message: "Description is required",
+    }),
   monthlyRent: z
     .string({ required_error: "Please add a monthly rent" })
     .min(1, "Monthly Rent is required"),
@@ -79,6 +82,7 @@ export const propertyDetailsSchema = listingSchema.pick({
   address: true,
   address2: true,
   town: true,
+  description: true,
   propertyType: true,
   bedrooms: true,
   bathrooms: true,

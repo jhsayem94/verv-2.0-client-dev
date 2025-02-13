@@ -1,0 +1,18 @@
+/* Remove default Quill border & shadow */
+.ql-container {
+  border: none !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+
+/* Remove inner editor border */
+.ql-editor {
+  border-radius: 16px !important;
+  background-color: transparent !important;
+}
+
+/* Remove toolbar border (if needed) */
+.ql-toolbar {
+  border: none !important;
+  border-radius: 16px 16px 0 0 !important;
+}

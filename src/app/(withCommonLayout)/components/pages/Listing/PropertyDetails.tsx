@@ -20,6 +20,7 @@ import {
   furnishedOptions,
   propertyTypeOptions,
 } from "./constants";
+import TextEditor from "../../UI/TextEditor/TextEditor";
 
 const PropertyDetails = () => {
   //   const router = useRouter();
@@ -146,7 +147,7 @@ const PropertyDetails = () => {
           </div>
 
           {/* property details */}
-          <div className="mt-12">
+          <div className="mt-12 space-y-5">
             <div className="flex justify-between items-center">
               <div className="w-[700px] space-y-3">
                 <h3 className="text-xl text-colorTextSecondary font-semibold leading-[30px]">
@@ -163,6 +164,11 @@ const PropertyDetails = () => {
                 Generate Smart Description
               </Button>
             </div>
+            <TextEditor
+              registerName="description"
+              control={control}
+              errors={errors}
+            />
           </div>
         </div>
 
