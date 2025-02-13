@@ -277,6 +277,23 @@ const PropertyDetails = () => {
           </div>
         </div>
 
+        {/* available for viewing */}
+        <div className="mt-12 space-y-5">
+          <div>
+            <h2 className="text-[24px] font-semibold text-colorTextSecondary leading-[32px] mb-3">
+              Availability for Viewings (optional)
+            </h2>
+            <p className="text-colorTextSecondary leading-[24px]">
+              Let tenants know when they can view the property by sharing your
+              availability below.
+            </p>
+          </div>
+          <TextEditor
+            registerName="viewingDescription"
+            control={control}
+            errors={errors}
+          />
+        </div>
         <Button type="submit">Submit</Button>
       </form>
     </section>

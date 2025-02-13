@@ -72,6 +72,7 @@ export const listingSchema = z.object({
     .min(1, "Deposit Amount is required"),
   billsIncluded: z.boolean().default(false),
   gardenAccess: z.boolean().default(false),
+  viewingDescription: z.string().optional(),
 });
 
 export type TListingSchema = z.infer<typeof listingSchema>;
@@ -94,6 +95,7 @@ export const propertyDetailsSchema = listingSchema.pick({
   depositAmount: true,
   billsIncluded: true,
   gardenAccess: true,
+  viewingDescription: true,
 });
 
 export type TPropertyDetails = z.infer<typeof propertyDetailsSchema>;
