@@ -72,6 +72,15 @@ export const listingSchema = z.object({
     .min(1, "Deposit Amount is required"),
   billsIncluded: z.boolean().default(false),
   gardenAccess: z.boolean().default(false),
+  parking: z.boolean().default(false),
+  fireplace: z.boolean().default(false),
+
+  studentAllowed: z.boolean().default(false),
+  familiesAllowed: z.boolean().default(false),
+  dssIncomeAccepted: z.boolean().default(false),
+  petsAllowed: z.boolean().default(false),
+  smokersAllowed: z.boolean().default(false),
+
   remoteVideoViewing: z.boolean().default(false),
   viewingDescription: z.string().optional(),
   youtubeUrl: z.string().optional(),
@@ -100,6 +109,13 @@ export const propertyDetailsSchema = listingSchema.pick({
   remoteVideoViewing: true,
   viewingDescription: true,
   youtubeUrl: true,
+  parking: true,
+  fireplace: true,
+  studentAllowed: true,
+  familiesAllowed: true,
+  dssIncomeAccepted: true,
+  petsAllowed: true,
+  smokersAllowed: true,
 });
 
 export type TPropertyDetails = z.infer<typeof propertyDetailsSchema>;

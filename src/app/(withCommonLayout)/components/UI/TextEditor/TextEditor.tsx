@@ -7,9 +7,13 @@ import {
   Path,
   FieldErrors,
 } from "react-hook-form";
-import ReactQuill from "react-quill-new";
+// import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 import "./TextEditor.css";
+import dynamic from "next/dynamic";
+
+// Dynamically import ReactQuill with SSR disabled
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 interface RichTextEditorFieldProps<T extends FieldValues> {
   registerName: Path<T>;

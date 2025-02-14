@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import PropertyDetails from "../../components/pages/Listing/PropertyDetails";
 import ListingTab from "../../components/Shared/Tabs/ListingTab";

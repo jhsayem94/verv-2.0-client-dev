@@ -40,7 +40,14 @@ const PropertyDetails = () => {
     defaultValues: {
       billsIncluded: false,
       gardenAccess: false,
+      parking: false,
+      fireplace: false,
       remoteVideoViewing: false,
+      studentAllowed: false,
+      familiesAllowed: false,
+      dssIncomeAccepted: false,
+      petsAllowed: false,
+      smokersAllowed: false,
     },
   });
 
@@ -238,7 +245,7 @@ const PropertyDetails = () => {
         </div>
 
         {/* features and preferences */}
-        <div className="flex items-center gap-8 mt-12">
+        <div className="flex gap-8 mt-12">
           {/* features */}
           <div className="w-1/2">
             <div className="mb-5">
@@ -250,10 +257,25 @@ const PropertyDetails = () => {
                 tenancy.
               </p>
             </div>
-            <div className="p-7 rounded-xl bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
+            <div className="p-7 rounded-xl space-y-6 bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
               <CheckboxField
                 registerName="billsIncluded"
                 label="Bills Included"
+                control={control}
+              />
+              <CheckboxField
+                registerName="gardenAccess"
+                label="Garden Access"
+                control={control}
+              />
+              <CheckboxField
+                registerName="parking"
+                label="Parking"
+                control={control}
+              />
+              <CheckboxField
+                registerName="fireplace"
+                label="Fireplace"
                 control={control}
               />
             </div>
@@ -269,10 +291,30 @@ const PropertyDetails = () => {
                 Please tell us about who can apply for your property.
               </p>
             </div>
-            <div className="p-7 rounded-xl bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
+            <div className="p-7 rounded-xl space-y-6 bg-[#FCFCFC] shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
               <CheckboxField
-                registerName="gardenAccess"
-                label="Garden Access"
+                registerName="studentAllowed"
+                label="Students Allowed"
+                control={control}
+              />
+              <CheckboxField
+                registerName="familiesAllowed"
+                label="Families Allowed"
+                control={control}
+              />
+              <CheckboxField
+                registerName="dssIncomeAccepted"
+                label="DSS Income Accepted"
+                control={control}
+              />
+              <CheckboxField
+                registerName="petsAllowed"
+                label="Pets Allowed"
+                control={control}
+              />
+              <CheckboxField
+                registerName="smokersAllowed"
+                label="Smokers Allowed"
                 control={control}
               />
             </div>
@@ -322,7 +364,6 @@ const PropertyDetails = () => {
               </p>
               <InputField
                 registerName="youtubeUrl"
-                // label="Postcode"
                 type="text"
                 placeholder="https://"
                 register={register}
