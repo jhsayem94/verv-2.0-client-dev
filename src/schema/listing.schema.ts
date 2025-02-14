@@ -112,16 +112,18 @@ export const propertyDetailsSchema = listingSchema.pick({
   depositAmount: true,
   billsIncluded: true,
   gardenAccess: true,
-  remoteVideoViewing: true,
-  viewingDescription: true,
-  youtubeUrl: true,
   parking: true,
   fireplace: true,
+
   studentAllowed: true,
   familiesAllowed: true,
   dssIncomeAccepted: true,
   petsAllowed: true,
   smokersAllowed: true,
+
+  remoteVideoViewing: true,
+  viewingDescription: true,
+  youtubeUrl: true,
   termsAgreed: true,
 });
 

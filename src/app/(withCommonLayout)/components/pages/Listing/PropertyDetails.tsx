@@ -30,11 +30,6 @@ const PropertyDetails = () => {
   const [error, setError] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const formattedDate = datePicker(date);
-  console.log(formattedDate);
-
-  console.log("files", files);
-
   const {
     control,
     register,
@@ -58,7 +53,58 @@ const PropertyDetails = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+    // console.log(data);
+    if (files) {
+      const propertyDetails = {
+        postcode: data.postcode,
+        address: data.address,
+        address2: data?.address2,
+        houseNumber: data.houseNumber,
+        town: data.town,
+        propertyType: data.propertyType,
+        bedrooms: data.bedrooms,
+        bathrooms: data.bathrooms,
+        furnishingOptions: data.furnishingOptions,
+        description: data.description,
+      };
+
+      const tenancyDetails = {
+        monthlyRent: data.monthlyRent,
+        minimumTenancy: data.minimumTenancy,
+        weeklyRent: data.weeklyRent,
+        maximumTenancy: data.maximumTenancy,
+        depositAmount: data.depositAmount,
+        moveInDate: datePicker(date),
+      };
+
+      const features = {
+        billsIncluded: data.billsIncluded,
+        gardenAccess: data.gardenAccess,
+        parking: data.parking,
+        fireplace: data.fireplace,
+      };
+
+      const tenantPreferences = {
+        studentAllowed: data.studentAllowed,
+        familiesAllowed: data.familiesAllowed,
+        dssIncomeAccepted: data.dssIncomeAccepted,
+        petsAllowed: data.petsAllowed,
+        smokersAllowed: data.smokersAllowed,
+      };
+
+      const propertyData = {
+        propertyDetails,
+        tenancyDetails,
+        features,
+        tenantPreferences,
+        remoteVideoViewing: data?.remoteVideoViewing,
+        viewingDescription: data?.viewingDescription,
+        youtubeUrl: data?.youtubeUrl,
+        termsAgreed: data.termsAgreed,
+      };
+
+      console.log("propertyData", propertyData);
+    }
     setIsSubmitting(true);
     // router.push("property-details");
   };
@@ -412,7 +458,9 @@ const PropertyDetails = () => {
               Policy.
             </p>
             {errors.termsAgreed && (
-              <p style={{ color: "red" }}>{errors.termsAgreed.message}</p>
+              <p className="text-red-500 text-sm">
+                {errors.termsAgreed.message}
+              </p>
             )}
           </div>
         </div>
