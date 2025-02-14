@@ -7,7 +7,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import InputField from "../../UI/Form/InputField";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "@/assets/icons/icons";
 import SelectField from "../../UI/Form/SelectField";
@@ -24,7 +24,7 @@ import TextEditor from "../../UI/TextEditor/TextEditor";
 import ImageUploader from "../../UI/ImageUploader/ImageUploader";
 
 const PropertyDetails = () => {
-  //   const router = useRouter();
+  const router = useRouter();
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [files, setFiles] = useState<File[] | null>(null);
   const [error, setError] = useState<string>("");
@@ -50,6 +50,8 @@ const PropertyDetails = () => {
       petsAllowed: false,
       smokersAllowed: false,
       termsAgreed: false,
+      // description: "This is default values",
+      // postcode: "default",
     },
   });
 
@@ -115,12 +117,13 @@ const PropertyDetails = () => {
       if (!files || files.length === 0) {
         setError("Please select an image");
       } else {
-        setError(""); // Clear error if files are selected
+        setError("");
         console.log("Form submitted successfully with files:", files);
       }
-      setIsSubmitting(false); // Reset submission state
+      setIsSubmitting(false);
+      router.push("preview-listing");
     }
-  }, [isSubmitting, files]);
+  }, [isSubmitting, files, router]);
 
   return (
     <section className="w-[1216px] m-auto mt-14">
@@ -142,7 +145,7 @@ const PropertyDetails = () => {
                   errors={errors}
                   className="w-full"
                 />
-                <Button className="bg-colorButton ">
+                <Button type="button" className="bg-colorButton">
                   <SearchIcon />
                   Find Address
                 </Button>
@@ -235,7 +238,10 @@ const PropertyDetails = () => {
                   friendly, and inviting to attract the right tenants.
                 </p>
               </div>
-              <Button className="px-4 py-2 text-[#50B533] font-semibold border border-[#B4DFA7] rounded-[10px] bg-[#EEF8EB]">
+              <Button
+                type="button"
+                className="px-4 py-2 text-[#50B533] font-semibold border border-[#B4DFA7] rounded-[10px] bg-[#EEF8EB]"
+              >
                 Generate Smart Description
               </Button>
             </div>
