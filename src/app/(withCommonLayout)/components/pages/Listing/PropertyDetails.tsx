@@ -33,6 +33,7 @@ const PropertyDetails = () => {
   const {
     control,
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<TPropertyDetails>({
@@ -480,6 +481,7 @@ const PropertyDetails = () => {
           </Button>
           <Button
             type="button"
+            onClick={() => reset()}
             className="text-colorButton border border-[#B4DFA7] bg-[#EEF8EB] px-7 py-2"
           >
             Reset
