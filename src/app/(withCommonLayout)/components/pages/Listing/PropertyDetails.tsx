@@ -13,7 +13,7 @@ import { SearchIcon } from "@/assets/icons/icons";
 import SelectField from "../../UI/Form/SelectField";
 import CheckboxField from "../../UI/Form/CheckboxField";
 import { Calendar } from "@/components/ui/calendar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { datePicker } from "@/helpers/datePicker";
 import {
   depositAmount,
@@ -26,9 +26,14 @@ import ImageUploader from "../../UI/ImageUploader/ImageUploader";
 const PropertyDetails = () => {
   //   const router = useRouter();
   const [date, setDate] = useState<Date | undefined>(new Date());
+  const [files, setFiles] = useState<File[] | null>(null);
+  const [error, setError] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const formattedDate = datePicker(date);
   console.log(formattedDate);
+
+  console.log("files", files);
 
   const {
     control,
@@ -53,8 +58,21 @@ const PropertyDetails = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
+    setIsSubmitting(true);
     // router.push("property-details");
   };
+
+  useEffect(() => {
+    if (isSubmitting) {
+      if (!files || files.length === 0) {
+        setError("Please select an image");
+      } else {
+        setError(""); // Clear error if files are selected
+        console.log("Form submitted successfully with files:", files);
+      }
+      setIsSubmitting(false); // Reset submission state
+    }
+  }, [isSubmitting, files]);
 
   return (
     <section className="w-[1216px] m-auto mt-14">
@@ -357,7 +375,8 @@ const PropertyDetails = () => {
             Photos & Videos
           </h2>
           <div className="p-11 rounded-xl shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
-            <ImageUploader />
+            <ImageUploader files={files} setFiles={setFiles} />
+            {error && <p className="text-red-500 mt-2">{error}</p>}
             <div className="mt-6">
               <p className="text-colorTextSecondary font-medium leading-[24px]">
                 Optional: Add YouTube share URL{" "}

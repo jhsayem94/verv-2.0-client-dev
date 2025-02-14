@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Paperclip } from "lucide-react";
 import {
   FileInput,
@@ -11,22 +10,12 @@ import {
 import { ImageUploadIcon } from "@/assets/icons/icons";
 import { Button } from "@/components/ui/button";
 
-const ImageUploader = () => {
-  const [files, setFiles] = useState<File[] | null>(null);
-  const [error, setError] = useState<string>("");
+interface ImageUploaderProps {
+  files: File[] | null;
+  setFiles: React.Dispatch<React.SetStateAction<File[] | null>>;
+}
 
-  console.log("files", files);
-
-  useEffect(() => {
-    if (!files || files.length === 0) {
-      setError("Please select an image");
-    } else {
-      setError(""); // Clear error when files are selected
-    }
-  }, [files]); // Runs only when `files` changes
-
-  console.log(error);
-
+const ImageUploader: React.FC<ImageUploaderProps> = ({ files, setFiles }) => {
   const dropZoneConfig = {
     maxFiles: 5,
     maxSize: 1024 * 1024 * 4,
@@ -70,7 +59,6 @@ const ImageUploader = () => {
             ))}
         </FileUploaderContent>
       </FileUploader>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
     </>
   );
 };
