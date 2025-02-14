@@ -92,3 +92,52 @@ export interface ICheckboxFieldProps<T extends FieldValues> {
   control: Control<T>;
   //   errors?: FieldErrors<T>;
 }
+
+type TPropertyDetails = {
+  postcode: string;
+  address: string;
+  address2?: string;
+  houseNumber: string;
+  town: string;
+  propertyType: string;
+  bedrooms: number;
+  bathrooms: number;
+  furnishingOptions: string;
+  description: string;
+};
+
+type TTenancyDetails = {
+  monthlyRent: number;
+  minimumTenancy: number;
+  weeklyRent: number;
+  maximumTenancy: number;
+  depositAmount: number;
+  moveInDate: string;
+};
+
+type TFeatures = {
+  billsIncluded: boolean;
+  gardenAccess: boolean;
+  parking: boolean;
+  fireplace: boolean;
+};
+
+type TTenantPreferences = {
+  studentAllowed: boolean;
+  familiesAllowed: boolean;
+  dssIncomeAccepted: boolean;
+  petsAllowed: boolean;
+  smokersAllowed: boolean;
+};
+
+export type TPropertyDetailsState = {
+  propertyDetails: TPropertyDetails;
+  tenancyDetails: TTenancyDetails;
+  features: TFeatures;
+  tenantPreferences: TTenantPreferences;
+  remoteVideoViewing: boolean;
+  viewingDescription: string;
+  youtubeUrl: string;
+  termsAgreed: boolean;
+  setData: (data: Partial<TPropertyDetailsState>) => void;
+};

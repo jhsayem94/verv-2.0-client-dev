@@ -128,3 +128,58 @@ export const propertyDetailsSchema = listingSchema.pick({
 });
 
 export type TPropertyDetails = z.infer<typeof propertyDetailsSchema>;
+
+export const propertyDetailsStoreSchema = z.object({
+  propertyOption: z.enum([
+    "Whole property",
+    "Individual rooms",
+    "Either whole property or individual rooms",
+  ]),
+
+  propertyDetails: z.object({
+    postcode: z.string().min(1, "Postcode is required"),
+    houseNumber: z.string().min(1, "House number is required"),
+    address: z.string().min(1, "Address is required"),
+    address2: z.string().optional(),
+    propertyType: z.enum(["Flat", "Bedsit"]),
+    bedrooms: z.string().min(1, "Number of bedrooms is required"),
+    bathrooms: z.string().min(1, "Number of bathrooms is required"),
+    furnishingOptions: z.enum(["Furnished", "Unfurnished", "Choice"]),
+    town: z.string().min(1, "Town is required"),
+    description: z.string().min(1, "Description is required"),
+  }),
+
+  tenancyDetails: z.object({
+    monthlyRent: z.string().min(1, "Monthly Rent is required"),
+    minimumTenancy: z.string().min(1, "Minimum Tenancy is required"),
+    weeklyRent: z.string().min(1, "Weekly Rent is required"),
+    maximumTenancy: z.string().min(1, "Maximum Tenancy is required"),
+    depositAmount: z.string().min(1, "Deposit Amount is required"),
+  }),
+
+  features: z.object({
+    billsIncluded: z.boolean().default(false),
+    gardenAccess: z.boolean().default(false),
+    parking: z.boolean().default(false),
+    fireplace: z.boolean().default(false),
+  }),
+
+  tenantPreferences: z.object({
+    studentAllowed: z.boolean().default(false),
+    familiesAllowed: z.boolean().default(false),
+    dssIncomeAccepted: z.boolean().default(false),
+    petsAllowed: z.boolean().default(false),
+    smokersAllowed: z.boolean().default(false),
+  }),
+
+  remoteVideoViewing: z.boolean().default(false),
+  viewingDescription: z.string().optional(),
+  youtubeUrl: z.string().optional(),
+  termsAgreed: z.boolean().refine((value) => value === true, {
+    message: "You must agree to the terms",
+  }),
+});
+
+export type TPropertyDetailsStoreSchema = z.infer<
+  typeof propertyDetailsStoreSchema
+>;

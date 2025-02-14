@@ -121,7 +121,7 @@ const PropertyDetails = () => {
         console.log("Form submitted successfully with files:", files);
       }
       setIsSubmitting(false);
-      router.push("preview-listing");
+      router.push("preview-listing"); // better to use absolute path
     }
   }, [isSubmitting, files, router]);
 
