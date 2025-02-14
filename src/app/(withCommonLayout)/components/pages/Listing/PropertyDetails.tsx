@@ -74,9 +74,9 @@ const PropertyDetails = () => {
                   placeholder="Enter your postcode"
                   register={register}
                   errors={errors}
-                  className="w-[344px]"
+                  className="w-full"
                 />
-                <Button className="bg-colorButton">
+                <Button className="bg-colorButton ">
                   <SearchIcon />
                   Find Address
                 </Button>
