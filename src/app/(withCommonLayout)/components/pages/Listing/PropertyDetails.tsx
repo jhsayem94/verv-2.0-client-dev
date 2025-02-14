@@ -53,6 +53,7 @@ const PropertyDetails = () => {
       dssIncomeAccepted: false,
       petsAllowed: false,
       smokersAllowed: false,
+      termsAgreed: false,
     },
   });
 
@@ -390,6 +391,29 @@ const PropertyDetails = () => {
                 className="w-[344px]"
               />
             </div>
+          </div>
+        </div>
+
+        {/* terms */}
+        <div className="mt-12 space-y-5">
+          <h2 className="text-[24px] font-semibold text-colorTextSecondary leading-[32px]">
+            Terms
+          </h2>
+          <div className="p-11 rounded-xl shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
+            <CheckboxField
+              registerName="termsAgreed"
+              label="Tick Here To Agree To The Verv Terms:"
+              control={control}
+            />
+            <p className="text-colorTextSecondary leading-[24px] mt-4">
+              I confirm that I do not charge tenants any admin fees, that I am
+              the landlord of this property with the legal right to rent it out,
+              and that I agree to Verv’s Terms and Conditions and Privacy
+              Policy.
+            </p>
+            {errors.termsAgreed && (
+              <p style={{ color: "red" }}>{errors.termsAgreed.message}</p>
+            )}
           </div>
         </div>
 

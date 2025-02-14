@@ -84,6 +84,12 @@ export const listingSchema = z.object({
   remoteVideoViewing: z.boolean().default(false),
   viewingDescription: z.string().optional(),
   youtubeUrl: z.string().optional(),
+  termsAgreed: z
+    .boolean()
+    .default(false)
+    .refine((value) => value === true, {
+      message: "You must agree to the terms",
+    }),
 });
 
 export type TListingSchema = z.infer<typeof listingSchema>;
@@ -116,6 +122,7 @@ export const propertyDetailsSchema = listingSchema.pick({
   dssIncomeAccepted: true,
   petsAllowed: true,
   smokersAllowed: true,
+  termsAgreed: true,
 });
 
 export type TPropertyDetails = z.infer<typeof propertyDetailsSchema>;
