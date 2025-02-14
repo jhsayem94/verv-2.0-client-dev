@@ -8,6 +8,7 @@ import { listingSchema } from "@/schema/listing.schema";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
+import { usePropertyDetailsStore } from "@/store/store";
 
 const propertyOptionSchema = listingSchema.pick({
   propertyOption: true,
@@ -17,6 +18,7 @@ type TPropertyOption = z.infer<typeof propertyOptionSchema>;
 
 const PropertyOptions = () => {
   const router = useRouter();
+  const setData = usePropertyDetailsStore((state) => state.setData);
 
   const {
     register,
@@ -29,6 +31,7 @@ const PropertyOptions = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
+    setData(data);
     router.push("property-details");
   };
 

@@ -22,13 +22,21 @@ import {
 } from "./constants";
 import TextEditor from "../../UI/TextEditor/TextEditor";
 import ImageUploader from "../../UI/ImageUploader/ImageUploader";
+import { usePropertyDetailsStore } from "@/store/store";
 
 const PropertyDetails = () => {
   const router = useRouter();
+
+  // get the date field
   const [date, setDate] = useState<Date | undefined>(new Date());
+
+  // for image uploading
   const [files, setFiles] = useState<File[] | null>(null);
   const [error, setError] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  // store the data to local storage
+  const setData = usePropertyDetailsStore((state) => state.setData);
 
   const {
     control,
@@ -107,6 +115,7 @@ const PropertyDetails = () => {
       };
 
       console.log("propertyData", propertyData);
+      setData(propertyData);
     }
     setIsSubmitting(true);
     // router.push("property-details");
