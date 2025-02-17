@@ -141,3 +141,9 @@ export type TPropertyDetailsState = {
   termsAgreed: boolean;
   setData: (data: Partial<TPropertyDetailsState>) => void;
 };
+
+export interface IFileState {
+  files: File[];
+  setFilesToStore: (files: File[]) => void;
+  clearFilesFromStore: () => void;
+}

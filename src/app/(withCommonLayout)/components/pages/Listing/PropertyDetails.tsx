@@ -120,7 +120,7 @@ const PropertyDetails = () => {
       setFilesToStore(files);
     }
     setIsSubmitting(true);
-    // router.push("property-details");
+    router.push("preview-listing");
   };
 
   useEffect(() => {

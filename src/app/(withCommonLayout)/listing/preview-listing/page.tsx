@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
-import { usePropertyDetailsStore } from "@/store/store";
+import { useFileStore, usePropertyDetailsStore } from "@/store/store";
 import ListingTab from "../../components/Shared/Tabs/ListingTab";
 
 const page = () => {
@@ -12,8 +12,11 @@ const page = () => {
     (state) => state.tenancyDetails
   );
 
-  console.log(propertyDetails);
-  console.log(tenancyDetails);
+  const { files } = useFileStore();
+
+  console.log("Files from preview page", files);
+  console.log("PropertyDetails from preview", propertyDetails);
+  console.log("TenancyDetails from preview", tenancyDetails);
 
   return (
     <div>
