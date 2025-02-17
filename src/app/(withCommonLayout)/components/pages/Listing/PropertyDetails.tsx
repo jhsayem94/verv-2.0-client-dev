@@ -22,7 +22,7 @@ import {
 } from "./constants";
 import TextEditor from "../../UI/TextEditor/TextEditor";
 import ImageUploader from "../../UI/ImageUploader/ImageUploader";
-import { usePropertyDetailsStore } from "@/store/store";
+import { useFileStore, usePropertyDetailsStore } from "@/store/store";
 
 const PropertyDetails = () => {
   const router = useRouter();
@@ -37,6 +37,7 @@ const PropertyDetails = () => {
 
   // store the data to local storage
   const setData = usePropertyDetailsStore((state) => state.setData);
+  const { setFilesToStore } = useFileStore();
 
   const {
     control,
@@ -116,6 +117,7 @@ const PropertyDetails = () => {
 
       console.log("propertyData", propertyData);
       setData(propertyData);
+      setFilesToStore(files);
     }
     setIsSubmitting(true);
     // router.push("property-details");

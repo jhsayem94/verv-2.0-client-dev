@@ -17,3 +17,15 @@ export const usePropertyDetailsStore = create<TPropertyDetailsState>()(
     }
   )
 );
+
+interface FileState {
+  files: File[]; // Store multiple files
+  setFilesToStore: (files: File[]) => void;
+  clearFilesFromStore: () => void;
+}
+
+export const useFileStore = create<FileState>((set) => ({
+  files: [],
+  setFilesToStore: (files) => set({ files }),
+  clearFilesFromStore: () => set({ files: [] }), // Clear files if needed
+}));

@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
-
 import landlordAboutHouse from "../../../../../../assets/images/landlord-about-house.jpg";
 import Image from "next/image";
 import Link from "next/link";
-
 import landlordWhyAdvertise from "../../../../../../assets/images/landlord-why-advertise.png";
 import TrustPilot from "../../../Shared/TrustPilot";
 import Reviews from "../../../Shared/Reviews";
