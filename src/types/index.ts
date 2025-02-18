@@ -93,7 +93,7 @@ export interface ICheckboxFieldProps<T extends FieldValues> {
   //   errors?: FieldErrors<T>;
 }
 
-type TPropertyDetails = {
+export type TPropertyDetails = {
   postcode: string;
   address: string;
   address2?: string;
@@ -147,3 +147,16 @@ export interface IFileState {
   setFilesToStore: (files: File[]) => void;
   clearFilesFromStore: () => void;
 }
+
+export type TPropertyDetails2 = {
+  postcode: string;
+  address: string;
+  address2?: string;
+  houseNumber: string;
+  town: string;
+  propertyType: string;
+  bedrooms: string;
+  bathrooms: string;
+  furnishingOptions: string;
+  description: string;
+};

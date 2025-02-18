@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import {
@@ -23,6 +24,7 @@ import {
 import TextEditor from "../../UI/TextEditor/TextEditor";
 import ImageUploader from "../../UI/ImageUploader/ImageUploader";
 import { useFileStore, usePropertyDetailsStore } from "@/store/store";
+import generateDescription from "@/services/GenerateDescription";
 
 const PropertyDetails = () => {
   const router = useRouter();
@@ -43,6 +45,8 @@ const PropertyDetails = () => {
     control,
     register,
     reset,
+    watch,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<TPropertyDetails>({
@@ -63,6 +67,43 @@ const PropertyDetails = () => {
       // postcode: "default",
     },
   });
+
+  // console.log("Files from Details", files);
+
+  // watch for generating description
+  const postcode = watch("postcode");
+  const address = watch("address");
+  const town = watch("town");
+  const propertyType = watch("propertyType");
+  const bedrooms = watch("bedrooms");
+  const bathrooms = watch("bathrooms");
+  const furnishingOptions = watch("furnishingOptions");
+  // const description = watch("description");
+
+  const dataFromGenerate = {
+    postcode,
+    address,
+    town,
+    propertyType,
+    bedrooms,
+    bathrooms,
+    furnishingOptions,
+  };
+
+  const handleDescriptionGeneration = async () => {
+    // setIsLoading(true);
+    try {
+      const response = await generateDescription(dataFromGenerate);
+      console.log(response);
+
+      setValue("description", response);
+      // setIsLoading(false);
+    } catch (error: any) {
+      console.error(error);
+      setError(error.message);
+      // setIsLoading(false);
+    }
+  };
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     // console.log(data);
@@ -123,6 +164,7 @@ const PropertyDetails = () => {
     router.push("preview-listing");
   };
 
+  // for file upload
   useEffect(() => {
     if (isSubmitting) {
       if (!files || files.length === 0) {
@@ -252,6 +294,7 @@ const PropertyDetails = () => {
               <Button
                 type="button"
                 className="px-4 py-2 text-[#50B533] font-semibold border border-[#B4DFA7] rounded-[10px] bg-[#EEF8EB]"
+                onClick={() => handleDescriptionGeneration()}
               >
                 Generate Smart Description
               </Button>
@@ -510,3 +553,6 @@ const PropertyDetails = () => {
 };
 
 export default PropertyDetails;
+
+// 44-7 handling image input manually
+// 46-8 Initializing Google Gemini
