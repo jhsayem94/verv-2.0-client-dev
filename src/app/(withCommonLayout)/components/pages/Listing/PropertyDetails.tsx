@@ -250,7 +250,7 @@ const PropertyDetails = () => {
                 <InputField
                   registerName="bedrooms"
                   label="Number of Bedrooms"
-                  type="text"
+                  type="number"
                   placeholder="Bedrooms"
                   register={register}
                   errors={errors}
@@ -260,7 +260,7 @@ const PropertyDetails = () => {
                 <InputField
                   registerName="bathrooms"
                   label="Number of Bathrooms"
-                  type="text"
+                  type="number"
                   placeholder="Bathrooms"
                   register={register}
                   errors={errors}
@@ -318,7 +318,7 @@ const PropertyDetails = () => {
                 <InputField
                   registerName="monthlyRent"
                   label="Monthly Rent For Entire Property"
-                  type="text"
+                  type="number"
                   placeholder="33.56"
                   register={register}
                   errors={errors}
@@ -326,7 +326,7 @@ const PropertyDetails = () => {
                 <InputField
                   registerName="weeklyRent"
                   label="Weekly Rent For Entire Property"
-                  type="text"
+                  type="number"
                   placeholder="33.56"
                   register={register}
                   errors={errors}
@@ -343,7 +343,7 @@ const PropertyDetails = () => {
                 <InputField
                   registerName="minimumTenancy"
                   label="Minimum Tenancy Length"
-                  type="text"
+                  type="number"
                   placeholder="12"
                   register={register}
                   errors={errors}
@@ -351,7 +351,7 @@ const PropertyDetails = () => {
                 <InputField
                   registerName="maximumTenancy"
                   label="Maximum Number of Tenants"
-                  type="text"
+                  type="number"
                   placeholder="33"
                   register={register}
                   errors={errors}

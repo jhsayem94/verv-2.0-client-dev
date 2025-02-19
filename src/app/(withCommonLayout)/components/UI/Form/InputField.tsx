@@ -13,6 +13,8 @@ const InputField: React.FC<InputFieldProps> = ({
   register,
   errors,
 }) => {
+  const registerValueType = type === "number" ? { valueAsNumber: true } : {};
+
   return (
     <div className={className}>
       <div>
@@ -22,7 +24,7 @@ const InputField: React.FC<InputFieldProps> = ({
           type={type}
           id={registerName}
           placeholder={placeholder}
-          {...register(registerName)}
+          {...register(registerName, registerValueType)}
         />
       </div>
       {errors?.[registerName] && (

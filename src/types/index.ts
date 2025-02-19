@@ -111,7 +111,7 @@ type TTenancyDetails = {
   minimumTenancy: number;
   weeklyRent: number;
   maximumTenancy: number;
-  depositAmount: number;
+  depositAmount: string;
   moveInDate: string;
 };
 
@@ -148,15 +148,15 @@ export interface IFileState {
   clearFilesFromStore: () => void;
 }
 
-export type TPropertyDetails2 = {
+export type TGeneratePropertyDescription = {
   postcode: string;
   address: string;
   address2?: string;
   houseNumber: string;
   town: string;
   propertyType: string;
-  bedrooms: string;
-  bathrooms: string;
+  bedrooms: number;
+  bathrooms: number;
   furnishingOptions: string;
   description: string;
 };

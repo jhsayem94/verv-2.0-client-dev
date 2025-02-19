@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use server";
 
-import { TPropertyDetails2 } from "@/types";
+import { TGeneratePropertyDescription } from "@/types";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // interface IPropertyData {
@@ -13,9 +13,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 // }
 
 const generateDescription = async (
-  propertyData: Partial<TPropertyDetails2>
+  propertyData: Partial<TGeneratePropertyDescription>
 ): Promise<string> => {
-  const prompt = `Generate a compelling property description based on the following details:
+  const prompt = `Generate a compelling property description within 300 words based on the following details:
     - Postcode: ${propertyData.postcode}
     - Address: ${propertyData.address}
     - Address Line 2: ${propertyData.address2 || "N/A"}

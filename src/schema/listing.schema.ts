@@ -26,13 +26,15 @@ export const listingSchema = z.object({
     required_error: "Please select a type",
   }),
   bedrooms: z
-    .string({
+    .number({
       required_error: "Please enter the number of bedrooms",
+      invalid_type_error: "Number of bedrooms must be a number",
     })
     .min(1, "Number of bedrooms is required"),
   bathrooms: z
-    .string({
+    .number({
       required_error: "Please enter the number of bathrooms",
+      invalid_type_error: "Number of bathrooms must be a number",
     })
     .min(1, "Number of bathrooms is required"),
   furnishingOptions: z.enum(["Furnished", "Unfurnished", "Choice"], {
@@ -48,28 +50,32 @@ export const listingSchema = z.object({
       message: "Description is required",
     }),
   monthlyRent: z
-    .string({ required_error: "Please add a monthly rent" })
-    .min(1, "Monthly Rent is required"),
-  minimumTenancy: z
-    .string({
-      required_error: "Please enter the minimum number of tenancy",
+    .number({
+      required_error: "Please enter monthly rent",
+      invalid_type_error: "Monthly rent must be a number",
     })
-    .min(1, "Minimum Number is required"),
+    .min(1, "Monthly rent is required"),
+  minimumTenancy: z
+    .number({
+      required_error: "Please enter the number of minimum tenancy",
+      invalid_type_error: "Number of tenancy must be a number",
+    })
+    .min(1, "Number of tenancy is required"),
   weeklyRent: z
-    .string({
-      required_error: "Please add a weekly rent",
+    .number({
+      required_error: "Please enter the Weekly Rent",
+      invalid_type_error: "Weekly Rent must be a number",
     })
     .min(1, "Weekly Rent is required"),
   maximumTenancy: z
-    .string({
-      required_error: "Please enter the maximum number of tenancy",
+    .number({
+      required_error: "Please enter the number of maximum tenancy",
+      invalid_type_error: "Number of maximum tenancy must be a number",
     })
     .min(1, "Maximum Number is required"),
   depositAmount: z
-    .string({
-      required_error: "Please enter an deposit amount",
-    })
-    .min(1, "Deposit Amount is required"),
+    .string({ required_error: "Please select a deposit amount" })
+    .min(1, "Town is required"),
   billsIncluded: z.boolean().default(false),
   gardenAccess: z.boolean().default(false),
   parking: z.boolean().default(false),
@@ -142,18 +148,18 @@ export const propertyDetailsStoreSchema = z.object({
     address: z.string().min(1, "Address is required"),
     address2: z.string().optional(),
     propertyType: z.enum(["Flat", "Bedsit"]),
-    bedrooms: z.string().min(1, "Number of bedrooms is required"),
-    bathrooms: z.string().min(1, "Number of bathrooms is required"),
+    bedrooms: z.number().min(1, "Number of bedrooms is required"),
+    bathrooms: z.number().min(1, "Number of bathrooms is required"),
     furnishingOptions: z.enum(["Furnished", "Unfurnished", "Choice"]),
     town: z.string().min(1, "Town is required"),
     description: z.string().min(1, "Description is required"),
   }),
 
   tenancyDetails: z.object({
-    monthlyRent: z.string().min(1, "Monthly Rent is required"),
-    minimumTenancy: z.string().min(1, "Minimum Tenancy is required"),
-    weeklyRent: z.string().min(1, "Weekly Rent is required"),
-    maximumTenancy: z.string().min(1, "Maximum Tenancy is required"),
+    monthlyRent: z.number().min(1, "Monthly Rent is required"),
+    minimumTenancy: z.number().min(1, "Minimum Tenancy is required"),
+    weeklyRent: z.number().min(1, "Weekly Rent is required"),
+    maximumTenancy: z.number().min(1, "Maximum Tenancy is required"),
     depositAmount: z.string().min(1, "Deposit Amount is required"),
   }),
 
