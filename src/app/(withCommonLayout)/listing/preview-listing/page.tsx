@@ -18,7 +18,7 @@ const page = () => {
 
   const files = useFileStore((state) => state.files);
   const loadFiles = useFileStore((state) => state.loadFiles);
-  const clearFiles = useFileStore((state) => state.clearFiles);
+  // const clearFiles = useFileStore((state) => state.clearFiles);
 
   console.log("PropertyDetails from preview", propertyDetails);
   console.log("TenancyDetails from preview", tenancyDetails);
