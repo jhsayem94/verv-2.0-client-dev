@@ -23,8 +23,10 @@ import {
 } from "./constants";
 import TextEditor from "../../UI/TextEditor/TextEditor";
 import ImageUploader from "../../UI/ImageUploader/ImageUploader";
-import { useFileStore, usePropertyDetailsStore } from "@/store/store";
+// import { useFileStore, usePropertyDetailsStore } from "@/store/store";
 import generateDescription from "@/services/GenerateDescription";
+import { usePropertyDetailsStore } from "@/store/store";
+import useFileStore from "@/store/fileStore";
 
 const PropertyDetails = () => {
   const router = useRouter();
@@ -33,13 +35,17 @@ const PropertyDetails = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
 
   // for image uploading
-  const [files, setFiles] = useState<File[] | null>(null);
+  const [imageFiles, setImageFiles] = useState<File[] | null>(null);
   const [error, setError] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
+  console.log("From Details", imageFiles);
+
   // store the data to local storage
   const setData = usePropertyDetailsStore((state) => state.setData);
-  const { setFilesToStore } = useFileStore();
+  const setFiles = useFileStore((state) => state.setFiles);
+
+  // const { setFilesToStore } = useFileStore();
 
   const {
     control,
@@ -121,9 +127,9 @@ const PropertyDetails = () => {
     }
   };
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     // console.log(data);
-    if (files) {
+    if (imageFiles) {
       const propertyDetails = {
         postcode: data.postcode,
         address: data.address,
@@ -174,7 +180,8 @@ const PropertyDetails = () => {
 
       console.log("propertyData", propertyData);
       setData(propertyData);
-      setFilesToStore(files);
+      await setFiles(imageFiles);
+      // setFilesToStore(files);
     }
     setIsSubmitting(true);
     router.push("preview-listing");
@@ -183,16 +190,16 @@ const PropertyDetails = () => {
   // for file upload
   useEffect(() => {
     if (isSubmitting) {
-      if (!files || files.length === 0) {
+      if (!imageFiles || imageFiles.length === 0) {
         setError("Please select an image");
       } else {
         setError("");
-        console.log("Form submitted successfully with files:", files);
+        console.log("Form submitted successfully with files:", imageFiles);
       }
       setIsSubmitting(false);
       router.push("preview-listing"); // better to use absolute path
     }
-  }, [isSubmitting, files, router]);
+  }, [isSubmitting, imageFiles, router]);
 
   return (
     <section className="w-[1216px] m-auto mt-14">
@@ -499,7 +506,7 @@ const PropertyDetails = () => {
             Photos & Videos
           </h2>
           <div className="p-11 rounded-xl shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
-            <ImageUploader files={files} setFiles={setFiles} />
+            <ImageUploader files={imageFiles} setFiles={setImageFiles} />
             {error && <p className="text-red-500 mt-2">{error}</p>}
             <div className="mt-6">
               <p className="text-colorTextSecondary font-medium leading-[24px]">

@@ -160,3 +160,25 @@ export type TGeneratePropertyDescription = {
   furnishingOptions: string;
   description: string;
 };
+
+// export interface IStoredFile {
+//   file: File | null; // Actual File object
+//   // fileName: string | null;
+//   fileURL: string | null; // URL for preview
+// }
+
+// Zustand Store
+export interface IStoredFile {
+  fileName: string;
+  fileType: string;
+  fileData: ArrayBuffer;
+  fileURL?: string;
+  file?: File;
+}
+
+export interface IFileStoreState {
+  files: IStoredFile[];
+  setFiles: (files: File[]) => Promise<void>;
+  loadFiles: () => Promise<void>;
+  clearFiles: () => Promise<void>;
+}
