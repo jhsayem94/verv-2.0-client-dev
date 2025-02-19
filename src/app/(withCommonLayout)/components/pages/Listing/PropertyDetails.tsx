@@ -52,6 +52,22 @@ const PropertyDetails = () => {
   } = useForm<TPropertyDetails>({
     resolver: zodResolver(propertyDetailsSchema),
     defaultValues: {
+      postcode: "NH300",
+      houseNumber: "4A",
+      address: "12 Brushfield Street",
+      address2: "",
+      propertyType: "Flat",
+      bedrooms: 1,
+      bathrooms: 1,
+      furnishingOptions: "Furnished",
+      town: "London",
+      description: "This is a description of the property",
+      monthlyRent: 1200,
+      minimumTenancy: 4,
+      weeklyRent: 300,
+      maximumTenancy: 12,
+      depositAmount: "2 Weeks Rent",
+
       billsIncluded: false,
       gardenAccess: false,
       parking: false,
