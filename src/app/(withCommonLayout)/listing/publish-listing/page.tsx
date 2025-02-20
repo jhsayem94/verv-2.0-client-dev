@@ -1,7 +1,11 @@
+import PublishListing from "../../components/pages/Listing/PublishListing";
+import ListingTab from "../../components/Shared/Tabs/ListingTab";
+
 const page = () => {
   return (
     <div>
-      <h2>This is publish listing page</h2>
+      <ListingTab isPublish={true} />
+      <PublishListing />
     </div>
   );
 };
