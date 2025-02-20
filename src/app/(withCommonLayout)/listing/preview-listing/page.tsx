@@ -7,8 +7,10 @@ import SingleListing from "../../components/pages/SingleListing/SingleListing";
 import { Button } from "@/components/ui/button";
 import useFileStore from "@/store/fileStore";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
   const propertyDetails = usePropertyDetailsStore(
     (state) => state.propertyDetails
   );
@@ -36,6 +38,11 @@ const page = () => {
     );
   }
 
+  const handleClick = () => {
+    console.log("Clicked handler");
+    router.push("publish-listing");
+  };
+
   return (
     <section>
       <div>
@@ -57,7 +64,10 @@ const page = () => {
           <p className="text-lg text-colorTextPrimary font-semibold">
             To publish this property onto Verv, click the button below:
           </p>
-          <Button className="bg-colorButton px-8 py-5 font-semibold">
+          <Button
+            className="bg-colorButton px-8 py-5 font-semibold"
+            onClick={handleClick}
+          >
             Save & Continue
           </Button>
           <p className="text-lg text-colorTextSecondary font-medium italic">
