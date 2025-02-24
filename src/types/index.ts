@@ -67,7 +67,7 @@ export interface InputFieldProps {
   registerName: string;
   label?: string;
   placeholder?: string;
-  type: string;
+  type?: string;
   register: UseFormRegister<any>;
   errors?: FieldErrors<any>;
 }
