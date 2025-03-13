@@ -8,7 +8,13 @@ import { Button } from "@/components/ui/button";
 import useFileStore from "@/store/fileStore";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { IStoredFile } from "@/types";
+import {
+  IStoredFile,
+  TFeatures,
+  TListingData,
+  TTenancyDetails,
+  TTenantPreferences,
+} from "@/types";
 
 const page = () => {
   const router = useRouter();
@@ -65,16 +71,25 @@ const page = () => {
   }
 
   // create property listing data
-  const listingData = {
-    propertyOption,
-    remoteVideoViewing,
-    ...propertyDetails,
-    propertyImages,
-    youtubeUrl,
-    tenancyDetails,
-    tenantPreferences,
-    features,
-    termsAgreed,
+  const listingData: TListingData = {
+    propertyOption: propertyOption ?? "",
+    address: propertyDetails?.address ?? "",
+    address2: propertyDetails?.address2 ?? "",
+    town: propertyDetails?.town ?? "",
+    bathrooms: propertyDetails?.bathrooms ?? 0,
+    bedrooms: propertyDetails?.bedrooms ?? 0,
+    description: propertyDetails?.description ?? "",
+    furnishingOptions: propertyDetails?.furnishingOptions ?? "",
+    houseNumber: propertyDetails?.houseNumber ?? "",
+    postcode: propertyDetails?.postcode ?? "",
+    propertyType: propertyDetails?.propertyType ?? "",
+    propertyImages: propertyImages ?? [],
+    remoteVideoViewing: remoteVideoViewing ?? false,
+    youtubeUrl: youtubeUrl ?? "",
+    termsAgreed: termsAgreed ?? false,
+    features: features ?? ({} as TFeatures),
+    tenancyDetails: tenancyDetails ?? ({} as TTenancyDetails),
+    tenantPreferences: tenantPreferences ?? ({} as TTenantPreferences),
   };
 
   const handleClick = () => {
@@ -84,16 +99,6 @@ const page = () => {
 
   return (
     <section>
-      <div>
-        <h1>File Preview</h1>
-        {files.map((fileData, index) => (
-          <div key={index}>
-            {/* <p>File Name: {fileData.file.name}</p> */}
-            <img src={fileData.fileURL} alt="Preview" width="300" />
-          </div>
-        ))}
-      </div>
-
       <ListingTab isPreview={true} />
       <div className="w-[1216px] m-auto flex items-center justify-center py-10 mt-14 mb-10 shadow-custom">
         <div className="flex flex-col items-center gap-6 shrink-0">

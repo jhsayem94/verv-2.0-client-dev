@@ -19,9 +19,11 @@ import VerticalCarousel from "./VerticalCarousel";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ItemChecked from "../../UI/ItemChecked/ItemChecked";
+import { TListingData } from "@/types";
+import "./SingleListing.css";
 
-const SingleListing = ({ listingData }) => {
-  console.log("from Listing data", listingData);
+const SingleListing = ({ listingData }: { listingData: TListingData }) => {
+  console.log(listingData);
   return (
     <>
       <section className="h-[973px] bg-[#EEF1F3] py-14">
@@ -29,14 +31,14 @@ const SingleListing = ({ listingData }) => {
           {/* basic property information */}
           <div className="mb-6">
             <p className="text-colorTextSecondary text-lg font-medium mb-6">
-              Home / {listingData.town} / Houses / Grange Road
+              Home / {listingData.town} / Houses / {listingData.address}
             </p>
             <div className="flex items-center gap-4">
               <h1 className="text-colorTextPrimary text-[32px] font-semibold leading-[120%]">
-                6 Bed, 3 Bath house{" "}
+                {listingData.bedrooms} Bed, {listingData.bathrooms} Bath house{" "}
               </h1>
               <p className="text-colorTextPrimary text-sm font-semibold leading-[120%] w-[160px] px-[20.5px] py-[7.5px] rounded-[32px] bg-[#B4DFA7]">
-                6 rooms available
+                {listingData.bedrooms} rooms available
               </p>
             </div>
             {/*  */}
@@ -45,7 +47,8 @@ const SingleListing = ({ listingData }) => {
                 <div className="flex items-center gap-2">
                   <LocationIcon width={18} height={20} />
                   <p className="text-lg leading-[150%] text-colorTextSecondary">
-                    Grange Road, Selly Oak, Birmingham, B296AP{" "}
+                    {listingData.address}, {listingData.town},{" "}
+                    {listingData.postcode}{" "}
                     <span className="font-semibold text-colorButton">
                       Show on map
                     </span>
@@ -66,7 +69,9 @@ const SingleListing = ({ listingData }) => {
                   <CalendarIcon width={18} height={20} fill="#50B533" />
                   <p className="text-lg leading-[150%] text-colorTextSecondary">
                     Available from:{" "}
-                    <span className="font-semibold ">1st January 2025</span>
+                    <span className="font-semibold ">
+                      {listingData.tenancyDetails.moveInDate}
+                    </span>
                   </p>
                 </div>
 
@@ -80,7 +85,7 @@ const SingleListing = ({ listingData }) => {
             </div>
           </div>
           {/* carousel */}
-          <VerticalCarousel />
+          <VerticalCarousel imageUrls={listingData.propertyImages} />
 
           {/* share property */}
           <div className="flex justify-between items-center mt-4">
@@ -114,7 +119,7 @@ const SingleListing = ({ listingData }) => {
               {/* per month */}
               <div className="flex flex-col items-center -gap-1">
                 <h2 className="text-colorButton text-5xl font-bold leading-[120%]">
-                  &#163;950
+                  &#163;{listingData.tenancyDetails.monthlyRent}
                 </h2>
                 <p className="text-lg text-colorTextSecondary leading-[150%]">
                   per month
@@ -126,7 +131,7 @@ const SingleListing = ({ listingData }) => {
               {/* week month */}
               <div className="flex flex-col items-center -gap-1">
                 <h2 className="text-[24px] text-colorTextSecondary font-semibold leading-[120%]">
-                  &#163;219.23
+                  &#163;{listingData.tenancyDetails.weeklyRent}
                 </h2>
                 <p className="text-lg text-colorTextSecondary leading-[150%]">
                   per week
@@ -247,7 +252,7 @@ const SingleListing = ({ listingData }) => {
                     </p>
                   </div>
                   <p className="text-lg text-colorTextPrimary font-semibold leading-[150%]">
-                    6
+                    {listingData.bedrooms}
                   </p>
                 </div>
 
@@ -260,7 +265,7 @@ const SingleListing = ({ listingData }) => {
                     </p>
                   </div>
                   <p className="text-lg text-colorTextPrimary font-semibold leading-[150%]">
-                    6
+                    {listingData.bathrooms}
                   </p>
                 </div>
 
@@ -328,33 +333,11 @@ const SingleListing = ({ listingData }) => {
               Property Description
             </h2>
             <div className="text-lg text-colorTextSecondary leading-[150%] mt-6 space-y-4">
-              <p>
-                6 bedroom & 3 bathroom student property available from
-                01/07/2025 until 30/06/2026 with a fixed deposit of £115 per
-                person priced at £499
-              </p>
-              <p>
-                £115 per person per week (non-ensuite rooms)
-                <br />
-                £125 per person per week (ensuite room)
-              </p>
-              <p>
-                For added convenience, we offer bills inclusive packages
-                ensuring utility expenses are covered hassle-free. Please speak
-                to us for further details.
-              </p>
-              <p>
-                Call us now or enquire online to book your viewing while
-                it&apos;s still available!
-              </p>
-              <p>Property ID: L-PS581</p>
-              <p>
-                The landlord/letting agent would like to let this property as a
-                whole. Most commonly to be offered on a joint tenancy agreement
-                though some landlords may be able to offer individual tenancy
-                agreements. If the property is for a single dweller an
-                individual tenancy applies.
-              </p>
+              {/* {listingData.description} */}
+              <div
+                className="property-description"
+                dangerouslySetInnerHTML={{ __html: listingData.description }}
+              />
             </div>
           </div>
 
@@ -369,21 +352,20 @@ const SingleListing = ({ listingData }) => {
                 </h3>
                 <div className="flex flex-col gap-4">
                   <ItemChecked
-                    isChecked={true}
-                    item="Extremely close to the pub"
-                  />
-                  <ItemChecked isChecked={true} item="6 double bedrooms" />
-                  <ItemChecked
-                    isChecked={true}
-                    item="2 shared bathrooms & 1 ensuite"
+                    isChecked={listingData.features.billsIncluded}
+                    item="Bills included"
                   />
                   <ItemChecked
-                    isChecked={true}
-                    item="Spacious open plan area"
+                    isChecked={listingData.features.fireplace}
+                    item="Fireplace"
                   />
                   <ItemChecked
-                    isChecked={true}
-                    item="Dishwasher, dryer & more"
+                    isChecked={listingData.features.gardenAccess}
+                    item="Garden Access"
+                  />
+                  <ItemChecked
+                    isChecked={listingData.features.parking}
+                    item="Parking"
                   />
                 </div>
               </div>
@@ -413,11 +395,26 @@ const SingleListing = ({ listingData }) => {
                   Preferences
                 </h3>
                 <div className="flex flex-col gap-4">
-                  <ItemChecked isChecked={true} item="Furnished" />
-                  <ItemChecked isChecked={true} item="EPC Rating : C" />
-                  <ItemChecked isChecked={false} item="Garden" />
-                  <ItemChecked isChecked={false} item="Parking" />
-                  <ItemChecked isChecked={false} item="Fireplace" />
+                  <ItemChecked
+                    isChecked={listingData.tenantPreferences.dssIncomeAccepted}
+                    item="DSS income accepted"
+                  />
+                  <ItemChecked
+                    isChecked={listingData.tenantPreferences.familiesAllowed}
+                    item="Families allowed"
+                  />
+                  <ItemChecked
+                    isChecked={listingData.tenantPreferences.petsAllowed}
+                    item="Pets allowed"
+                  />
+                  <ItemChecked
+                    isChecked={listingData.tenantPreferences.smokersAllowed}
+                    item="Smokers allowed"
+                  />
+                  <ItemChecked
+                    isChecked={listingData.tenantPreferences.studentAllowed}
+                    item="Student allowed"
+                  />
                 </div>
               </div>
               {/* Preferences */}

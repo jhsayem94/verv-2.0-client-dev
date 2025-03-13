@@ -6,33 +6,35 @@ import {
   SliderThumbItem,
 } from "@/components/extension/embala-carousel";
 
-const VerticalCarousel = () => {
+const VerticalCarousel = ({ imageUrls }: { imageUrls: string[] }) => {
   return (
     <Carousel orientation="vertical" className="flex items-center gap-[32px]">
       {/* <CarouselNext />
       <CarouselPrevious /> */}
       <div className="relative w-[904px]">
         <CarouselMainContainer className="h-[528px]">
-          {Array.from({ length: 10 }).map((_, index) => (
+          {imageUrls.map((item, index) => (
             <SliderMainItem
               key={index}
-              className="border border-muted flex items-center justify-center h-[528px] rounded-md"
+              className="border border-muted flex items-center justify-center h-[528px] rounded-xl bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${item})` }}
             >
-              Slide {index + 1}
+              {/* Slide {index + 1} */}
             </SliderMainItem>
           ))}
         </CarouselMainContainer>
       </div>
       <CarouselThumbsContainer className="h-[528px]">
-        {Array.from({ length: 10 }).map((_, index) => (
+        {imageUrls.map((item, index) => (
           <SliderThumbItem
             key={index}
             index={index}
-            className="rounded-md bg-transparent"
+            className="rounded-xl bg-transparent"
           >
-            <span className="border border-muted flex items-center justify-center h-[160px] w-[280px] rounded-md cursor-pointer bg-background">
-              Slide {index + 1}
-            </span>
+            <div
+              className="border border-muted h-[160px] w-[280px] rounded-xl cursor-pointer bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${item})` }}
+            ></div>
           </SliderThumbItem>
         ))}
       </CarouselThumbsContainer>

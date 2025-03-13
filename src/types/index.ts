@@ -106,23 +106,23 @@ export type TPropertyDetails = {
   description: string;
 };
 
-type TTenancyDetails = {
+export type TTenancyDetails = {
   monthlyRent: number;
   minimumTenancy: number;
   weeklyRent: number;
   maximumTenancy: number;
   depositAmount: string;
-  moveInDate: string;
+  moveInDate?: string;
 };
 
-type TFeatures = {
+export type TFeatures = {
   billsIncluded: boolean;
   gardenAccess: boolean;
   parking: boolean;
   fireplace: boolean;
 };
 
-type TTenantPreferences = {
+export type TTenantPreferences = {
   studentAllowed: boolean;
   familiesAllowed: boolean;
   dssIncomeAccepted: boolean;
@@ -161,12 +161,6 @@ export type TGeneratePropertyDescription = {
   description: string;
 };
 
-// export interface IStoredFile {
-//   file: File | null; // Actual File object
-//   // fileName: string | null;
-//   fileURL: string | null; // URL for preview
-// }
-
 // Zustand Store
 export interface IStoredFile {
   fileName: string;
@@ -182,3 +176,24 @@ export interface IFileStoreState {
   loadFiles: () => Promise<void>;
   clearFiles: () => Promise<void>;
 }
+
+export type TListingData = {
+  propertyOption: string;
+  address: string;
+  address2?: string;
+  town: string;
+  bathrooms: number;
+  bedrooms: number;
+  description: string;
+  furnishingOptions: string;
+  houseNumber: string;
+  postcode: string;
+  propertyType: string;
+  propertyImages: string[];
+  remoteVideoViewing: boolean;
+  youtubeUrl: string;
+  termsAgreed: boolean;
+  features: TFeatures;
+  tenancyDetails: TTenancyDetails;
+  tenantPreferences: TTenantPreferences;
+};
