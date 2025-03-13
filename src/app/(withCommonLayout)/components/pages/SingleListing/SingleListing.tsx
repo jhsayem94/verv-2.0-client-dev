@@ -20,7 +20,8 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ItemChecked from "../../UI/ItemChecked/ItemChecked";
 
-const SingleListing = () => {
+const SingleListing = ({ listingData }) => {
+  console.log("from Listing data", listingData);
   return (
     <>
       <section className="h-[973px] bg-[#EEF1F3] py-14">
@@ -28,7 +29,7 @@ const SingleListing = () => {
           {/* basic property information */}
           <div className="mb-6">
             <p className="text-colorTextSecondary text-lg font-medium mb-6">
-              Home / Birmingham / Houses / Grange Road
+              Home / {listingData.town} / Houses / Grange Road
             </p>
             <div className="flex items-center gap-4">
               <h1 className="text-colorTextPrimary text-[32px] font-semibold leading-[120%]">
@@ -361,10 +362,10 @@ const SingleListing = () => {
           <div className="flex gap-[123px] mt-10">
             {/* amenities and bills */}
             <div className="space-y-10">
-              {/* amenities */}
+              {/* Features */}
               <div>
                 <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
-                  Amenities
+                  Features
                 </h3>
                 <div className="flex flex-col gap-4">
                   <ItemChecked
@@ -388,7 +389,7 @@ const SingleListing = () => {
               </div>
 
               {/* Bills */}
-              <div>
+              {/* <div>
                 <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
                   Bills
                 </h3>
@@ -401,15 +402,15 @@ const SingleListing = () => {
                   <ItemChecked isChecked={false} item="Internet" />
                   <ItemChecked isChecked={false} item="Gas" />
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* highlights and Preferences */}
             <div className="space-y-10">
-              {/* highlights */}
+              {/* Preferences */}
               <div>
                 <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
-                  Highlights
+                  Preferences
                 </h3>
                 <div className="flex flex-col gap-4">
                   <ItemChecked isChecked={true} item="Furnished" />
@@ -420,7 +421,7 @@ const SingleListing = () => {
                 </div>
               </div>
               {/* Preferences */}
-              <div>
+              {/* <div>
                 <h3 className="text-2xl text-colorTextPrimary font-semibold leading-[120%] mb-6">
                   Preferences
                 </h3>
@@ -431,7 +432,7 @@ const SingleListing = () => {
                   <ItemChecked isChecked={false} item="Pets Allowed" />
                   <ItemChecked isChecked={false} item="DSS/LHA Covers Rent" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 

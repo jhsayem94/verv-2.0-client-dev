@@ -6,29 +6,55 @@ import ListingTab from "../../components/Shared/Tabs/ListingTab";
 import SingleListing from "../../components/pages/SingleListing/SingleListing";
 import { Button } from "@/components/ui/button";
 import useFileStore from "@/store/fileStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { IStoredFile } from "@/types";
 
 const page = () => {
   const router = useRouter();
+
+  const propertyOption = usePropertyDetailsStore(
+    (state) => state.propertyOption
+  );
+
+  const remoteVideoViewing = usePropertyDetailsStore(
+    (state) => state.remoteVideoViewing
+  );
+
   const propertyDetails = usePropertyDetailsStore(
     (state) => state.propertyDetails
   );
+
   const tenancyDetails = usePropertyDetailsStore(
     (state) => state.tenancyDetails
   );
 
-  const files = useFileStore((state) => state.files);
+  const tenantPreferences = usePropertyDetailsStore(
+    (state) => state.tenantPreferences
+  );
+
+  const features = usePropertyDetailsStore((state) => state.features);
+
+  const termsAgreed = usePropertyDetailsStore((state) => state.termsAgreed);
+  const youtubeUrl = usePropertyDetailsStore((state) => state.youtubeUrl);
+
+  // create an array of image urls
+  const [propertyImages, setPropertyImages] = useState<string[]>([]);
+
+  const files: IStoredFile[] = useFileStore((state) => state.files);
   const loadFiles = useFileStore((state) => state.loadFiles);
   // const clearFiles = useFileStore((state) => state.clearFiles);
 
-  console.log("PropertyDetails from preview", propertyDetails);
-  console.log("TenancyDetails from preview", tenancyDetails);
-  console.log(files);
+  // Load files from IndexedDB when page loads
+  useEffect(() => {
+    loadFiles();
+  }, [loadFiles]);
 
   useEffect(() => {
-    loadFiles(); // Load files from IndexedDB when page loads
-  }, [loadFiles]);
+    if (Array.isArray(files) && files.length > 0) {
+      setPropertyImages(files.map((fileData) => fileData?.fileURL as string));
+    }
+  }, [files]);
 
   if (files.length === 0) {
     return (
@@ -37,6 +63,19 @@ const page = () => {
       </p>
     );
   }
+
+  // create property listing data
+  const listingData = {
+    propertyOption,
+    remoteVideoViewing,
+    ...propertyDetails,
+    propertyImages,
+    youtubeUrl,
+    tenancyDetails,
+    tenantPreferences,
+    features,
+    termsAgreed,
+  };
 
   const handleClick = () => {
     console.log("Clicked handler");
@@ -75,7 +114,7 @@ const page = () => {
           </p>
         </div>
       </div>
-      <SingleListing />
+      <SingleListing listingData={listingData} />
     </section>
   );
 };
