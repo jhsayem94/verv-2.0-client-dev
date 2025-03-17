@@ -506,7 +506,19 @@ const PropertyDetails = () => {
             Photos & Videos
           </h2>
           <div className="p-11 rounded-xl shadow-[0px_1px_4px_0px_rgba(16,24,40,0.10),0px_1px_4px_0px_rgba(16,24,40,0.06)]">
-            <ImageUploader files={imageFiles} setFiles={setImageFiles} />
+            <ImageUploader
+              files={imageFiles}
+              setFiles={setImageFiles}
+              maxFiles={5}
+              isMultiple={true}
+              fileTypes={[".png", ".jpg", ".jpeg", ".webp"]}
+              containerClass="bg-[#EEF8EB] rounded-lg px-[326px] py-[38px]"
+            >
+              <p className="text-colorTextLime font-semibold leading-[24px] text-center">
+                Drag a photo here, or click &quot;Add Photos&quot; to select
+                your photos
+              </p>
+            </ImageUploader>
             {error && <p className="text-red-500 mt-2">{error}</p>}
             <div className="mt-6">
               <p className="text-colorTextSecondary font-medium leading-[24px]">

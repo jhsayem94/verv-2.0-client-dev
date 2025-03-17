@@ -54,10 +54,6 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
           <div className="flex items-center justify-center flex-col pt-3 pb-4 w-full space-y-5">
             <ImageUploadIcon width={36} height={36} />
             {children}
-            {/* <p className="text-colorTextLime font-semibold leading-[24px] text-center">
-              Drag a photo here, or click &quot;Add Photos&quot; to select your
-              photos
-            </p> */}
             <Button
               type="button"
               className="text-white text-sm font-medium leading-[20px] rounded-[8px] bg-colorButton px-10 py-2"
