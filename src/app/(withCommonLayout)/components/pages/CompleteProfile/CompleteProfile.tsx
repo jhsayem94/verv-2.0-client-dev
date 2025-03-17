@@ -100,14 +100,59 @@ const CompleteProfile = () => {
         </div>
 
         <div>
-          <ImageUploader files={image} setFiles={setImage} />
+          <ImageUploader
+            files={image}
+            setFiles={setImage}
+            maxFiles={1}
+            isMultiple={false}
+            fileTypes={[".png", ".jpg", ".jpeg", ".webp"]}
+            containerClass="bg-[#EEF8EB] rounded-lg px-[150px] py-[30px]"
+          >
+            <p className="text-colorTextLime text-sm font-semibold leading-[150%] text-center">
+              Drag a photo here, or click &quot;Add Photos&quot; to select your
+              photos
+            </p>
+          </ImageUploader>
+        </div>
+
+        <div>
+          <p className="text-center  lg:px-5 px-3 mt-6 mb-4">
+            <span className="text-[#314660] text-sm font-normal  leading-tight">
+              By selecting{" "}
+            </span>
+            <span className="text-[#314660] text-sm font-semibold  leading-none">
+              Agree & Continue
+            </span>
+            <span className="text-[#314660] text-sm font-normal  leading-tight">
+              , I agree to Verv`&apos;`s{" "}
+            </span>
+            <span className="text-[#50B533] text-sm font-semibold  underline leading-none">
+              Terms & Conditions
+            </span>
+            <span className="text-[#314660] text-sm font-normal  leading-tight">
+              ,{" "}
+            </span>
+            <span className="text-[#50B533] text-sm font-semibold  underline leading-none">
+              Payment Terms
+            </span>
+            <span className="text-[#314660] text-sm font-normal  leading-tight">
+              {" "}
+              & acknowledge the{" "}
+            </span>
+            <span className="text-[#50B533] text-sm font-semibold  underline leading-none">
+              Privacy Policy
+            </span>
+            <span className="text-[#314660] text-sm font-normal  leading-tight">
+              .
+            </span>
+          </p>
         </div>
 
         <Button
           type="submit"
           className="bg-colorButton w-full mt-6 rounded shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] text-lg font-semibold"
         >
-          Submit
+          Agree & Continue
         </Button>
       </form>
     </div>
