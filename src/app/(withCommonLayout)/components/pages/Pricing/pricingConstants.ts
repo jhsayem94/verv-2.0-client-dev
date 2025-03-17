@@ -1,37 +1,26 @@
-export const propertyTypeOptions = [
-  {
-    label: "Residential",
-    options: [{ value: "Flat", label: "Flat" }],
-  },
-  {
-    label: "Commercial",
-    options: [{ value: "Bedsit", label: "Bedsit" }],
-  },
-];
+type TOffer = {
+  item: string;
+};
 
-export const furnishedOptions = [
-  {
-    label: "Options",
-    options: [
-      { value: "Furnished", label: "Furnished" },
-      { value: "Unfurnished", label: "Unfurnished" },
-      { value: "Choice", label: "Choice" },
-    ],
-  },
-];
+export type TPricingPlan = {
+  id: number;
+  pricingTitle: string;
+  buttonName: string;
+  buttonColor: string;
+  buttonText: string;
+  bgClr: string;
+  advertTitle: string;
+  offers: TOffer[];
+  price?: number; // Optional since it's missing in the first object
+};
 
-export const depositAmount = [
-  {
-    label: "Amount",
-    options: [
-      { value: "2 Weeks Rent", label: "2 Weeks Rent" },
-      { value: "Monthly Rent", label: "Monthly Rent" },
-      { value: "Choice", label: "Choice" },
-    ],
-  },
-];
+export type TAdditionalService = {
+  id: number;
+  title: string;
+  price: number;
+};
 
-export const pricingData = [
+export const pricingData: TPricingPlan[] = [
   {
     id: 1,
     pricingTitle: "Listing Only",
@@ -102,5 +91,53 @@ export const pricingData = [
         item: "Active listings for 3 months",
       },
     ],
+  },
+];
+
+export const additionalServicesData: TAdditionalService[] = [
+  {
+    id: 1,
+    title: "Tenant Referencing",
+    price: 19.99,
+  },
+  {
+    id: 2,
+    title: "Rent Collection",
+    price: 39.99,
+  },
+  {
+    id: 3,
+    title: "Gas Safety Certificate (CP12)",
+    price: 54.99,
+  },
+  {
+    id: 4,
+    title: "Energy Performance Certificate (EPC)",
+    price: 85.99,
+  },
+  {
+    id: 9,
+    title: "Electrical Safety Certificate (EICR)",
+    price: 75.99,
+  },
+  {
+    id: 5,
+    title: "Inventory & Check-In/Out",
+    price: 95.99,
+  },
+  {
+    id: 6,
+    title: "Pro Photos",
+    price: 25.99,
+  },
+  {
+    id: 7,
+    title: "Floor Plans",
+    price: 9.99,
+  },
+  {
+    id: 8,
+    title: "Accompanied Viewings Service",
+    price: 29.99,
   },
 ];

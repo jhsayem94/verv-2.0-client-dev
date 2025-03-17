@@ -1,9 +1,10 @@
-import SingleListing from "../components/pages/SingleListing/SingleListing";
+// import SingleListing from "../components/pages/SingleListing/SingleListing";
 
 const page = () => {
   return (
     <>
-      <SingleListing />
+      {/* <SingleListing /> */}
+      <h2>Listing ID will be here</h2>
     </>
   );
 };

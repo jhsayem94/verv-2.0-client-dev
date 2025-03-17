@@ -1,6 +1,8 @@
 import {
   Carousel,
   CarouselMainContainer,
+  CarouselNext,
+  CarouselPrevious,
   CarouselThumbsContainer,
   SliderMainItem,
   SliderThumbItem,
@@ -9,8 +11,8 @@ import {
 const VerticalCarousel = ({ imageUrls }: { imageUrls: string[] }) => {
   return (
     <Carousel orientation="vertical" className="flex items-center gap-[32px]">
-      {/* <CarouselNext />
-      <CarouselPrevious /> */}
+      <CarouselNext />
+      <CarouselPrevious />
       <div className="relative w-[904px]">
         <CarouselMainContainer className="h-[528px]">
           {imageUrls.map((item, index) => (
