@@ -12,6 +12,7 @@ import { profileSchema } from "@/schema/profile.schema";
 import { useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ImageUploader from "../../UI/ImageUploader/ImageUploader";
+import { Input } from "@/components/ui/input";
 
 type TProfile = z.infer<typeof profileSchema>;
 
@@ -76,14 +77,20 @@ const CompleteProfile = () => {
           </p>
         </div>
 
-        <InputField
-          registerName="phoneNumber"
-          type="text"
-          placeholder="Phone Number"
-          register={register}
-          errors={errors}
-          className="w-full"
-        />
+        <div className="relative w-full">
+          <p className="text-colorTextSecondary font-normal leading-[150%] absolute left-3 top-1/2 -translate-y-1/2">
+            +44 (UK)
+          </p>
+          <Input
+            id="phoneNumber"
+            type="text"
+            placeholder="Phone Number"
+            {...register("phoneNumber", {
+              required: "Phone Number is required",
+            })}
+            className="pl-24 flex w-full items-center self-stretch py-1.5 rounded-md border border-gray-400 bg-white"
+          />
+        </div>
 
         <div>
           <MultipleSelector

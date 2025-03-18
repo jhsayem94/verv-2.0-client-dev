@@ -12,13 +12,4 @@ export const profileSchema = z.object({
   phoneNumber: z
     .string({ required_error: "Please enter your phone number" })
     .min(2, "Phone Number is required"),
-
-  //   languages: z
-  //     .array(
-  //       z.object({
-  //         label: z.string(),
-  //         value: z.string(),
-  //       })
-  //     )
-  //     .min(1),
 });

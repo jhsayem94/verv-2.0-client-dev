@@ -2,10 +2,9 @@ import CompleteProfile from "../../components/pages/CompleteProfile/CompleteProf
 
 const page = () => {
   return (
-    <div>
-      <h2>This is create profile component</h2>
+    <>
       <CompleteProfile />
-    </div>
+    </>
   );
 };
 
