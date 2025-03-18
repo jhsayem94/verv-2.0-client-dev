@@ -11,6 +11,11 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 
+export interface IUser {
+  email: string;
+  role: string;
+}
+
 export interface ITrustPilot {
   showGrow?: boolean;
   showTrustPilot?: boolean;
