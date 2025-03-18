@@ -7,13 +7,30 @@ import { revalidateTag } from "next/cache";
 import { FieldValues } from "react-hook-form";
 
 export const registerUser = async (userData: FieldValues): Promise<any> => {
-  console.log("From User Service", userData);
   try {
     const { data } = await axiosInstance.post("/user/register-user", userData);
 
     revalidateTag("users");
 
     return data;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    console.log(axiosError.response?.data || axiosError.message);
+
+    throw new Error("Failed to create user");
+  }
+};
+
+export const getUser = async (id: string): Promise<any> => {
+  console.log("From User Service get", id);
+  try {
+    const { data } = await axiosInstance.get(`/user/${id}`);
+
+    // revalidateTag("users");
+    // console.log(data.data);
+
+    return data.data;
   } catch (error) {
     const axiosError = error as AxiosError;
 

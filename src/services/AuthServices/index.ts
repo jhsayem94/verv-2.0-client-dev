@@ -5,6 +5,7 @@ import { AxiosError } from "axios";
 import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
 import { jwtDecode } from "jwt-decode";
+import { getUser } from "../UserServices";
 
 export const loginUser = async (userData: FieldValues) => {
   try {
@@ -22,7 +23,7 @@ export const loginUser = async (userData: FieldValues) => {
 
     console.log(axiosError.response?.data || axiosError.message);
 
-    throw new Error("Failed to create user");
+    throw new Error("Failed to login user");
   }
 };
 
@@ -34,14 +35,23 @@ export const getCurrentUser = async () => {
 
   if (accessToken) {
     decodedToken = await jwtDecode(accessToken);
-    console.log(decodedToken);
 
-    return {
-      id: decodedToken.userId,
-      email: decodedToken.email,
-      role: decodedToken.role,
-    };
+    const userData = getUser(decodedToken.userId);
+
+    return userData;
+
+    // {
+    //   id: decodedToken.userId,
+    //   email: decodedToken.email,
+    //   role: decodedToken.role,
+    // };
   }
 
   return decodedToken;
+};
+
+export const logout = async () => {
+  const cookieStore = await cookies();
+  cookieStore.delete("accessToken");
+  cookieStore.delete("refreshToken");
 };

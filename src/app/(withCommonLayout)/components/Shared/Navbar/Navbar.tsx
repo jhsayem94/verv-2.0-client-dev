@@ -14,9 +14,24 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CirclePerson, DownArrow, HomeIcon } from "@/assets/icons/icons";
 import { useRouter } from "next/navigation";
+import { useUser } from "@/context/user.provider";
+import { logout } from "@/services/AuthServices";
 
 const Navbar = () => {
+  const { user, setIsLoading: userLoading } = useUser();
+  console.log("User from navbar", user);
+
   const router = useRouter();
+
+  // handle logout and reload after logout
+  const handleLogout = () => {
+    logout();
+    userLoading(true);
+
+    // if (protectedRoutes.some((route) => pathName.match(route))) {
+    //   router.push("/");
+    // }
+  };
 
   return (
     <nav className="py-6 bg-white shadow-[0px_4px_4px_rgba(0,0,0,0.10)] hidden md:block sticky top-0 z-20">
@@ -78,36 +93,40 @@ const Navbar = () => {
           </div>
           <div className="flex justify-end items-center gap-6 font-medium">
             <ul className="flex items-center justify-center gap-2">
-              <li>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Avatar className="cursor-pointer">
-                      <AvatarImage
-                        src="https://github.com/shadcn.png"
-                        alt="@shadcn"
-                      />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-36">
-                    <DropdownMenuGroup>
-                      <DropdownMenuItem>Profile</DropdownMenuItem>
-                      <DropdownMenuItem>Setting</DropdownMenuItem>
-                      <DropdownMenuItem>Logout</DropdownMenuItem>
-                    </DropdownMenuGroup>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </li>
-
-              <li>
-                <Link
-                  href="/login"
-                  className="flex justify-center items-center gap-2"
-                >
-                  <CirclePerson width={24} height={24} />
-                  Sign In/Register
-                </Link>
-              </li>
+              {!user ? (
+                <li>
+                  <Link
+                    href="/login"
+                    className="flex justify-center items-center gap-2"
+                  >
+                    <CirclePerson width={24} height={24} />
+                    Sign In/Register
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Avatar className="cursor-pointer">
+                        <AvatarImage
+                          src="https://github.com/shadcn.png"
+                          alt="@shadcn"
+                        />
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-36">
+                      <DropdownMenuGroup>
+                        <DropdownMenuItem>Profile</DropdownMenuItem>
+                        <DropdownMenuItem>Setting</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => handleLogout()}>
+                          Logout
+                        </DropdownMenuItem>
+                      </DropdownMenuGroup>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </li>
+              )}
             </ul>
             <Button
               className="text-lg font-semibold rounded-[32px] bg-[#50B533] w-[180px] h-[56px] py-2 px-4"
