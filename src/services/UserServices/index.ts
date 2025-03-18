@@ -7,7 +7,7 @@ import { revalidateTag } from "next/cache";
 import { FieldValues } from "react-hook-form";
 
 export const registerUser = async (userData: FieldValues): Promise<any> => {
-  console.log(userData);
+  console.log("From User Service", userData);
   try {
     const { data } = await axiosInstance.post("/user/register-user", userData);
 

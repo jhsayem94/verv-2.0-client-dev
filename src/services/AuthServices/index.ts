@@ -37,7 +37,8 @@ export const getCurrentUser = async () => {
     console.log(decodedToken);
 
     return {
-      email: decodedToken.userEmail,
+      id: decodedToken.userId,
+      email: decodedToken.email,
       role: decodedToken.role,
     };
   }
