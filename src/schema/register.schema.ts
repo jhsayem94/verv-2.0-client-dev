@@ -5,6 +5,6 @@ export const registerSchema = z.object({
   password: z.string().min(8, "Password must be at least 8 characters"),
   role: z.preprocess(
     (value) => (value === null || value === undefined ? undefined : value),
-    z.enum(["landlord", "tenant"], { required_error: "Role is required" })
+    z.enum(["LANDLORD", "TENANT"], { required_error: "Role is required" })
   ),
 });

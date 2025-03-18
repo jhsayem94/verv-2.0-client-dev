@@ -4,15 +4,12 @@
 import axiosInstance from "@/lib/AxiosInstance";
 import { AxiosError } from "axios";
 import { revalidateTag } from "next/cache";
+import { FieldValues } from "react-hook-form";
 
-export const createUser = async (formData: FormData): Promise<any> => {
-  console.log(formData);
+export const registerUser = async (userData: FieldValues): Promise<any> => {
+  console.log(userData);
   try {
-    const { data } = await axiosInstance.post("/users/create-user", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const { data } = await axiosInstance.post("/user/register-user", userData);
 
     revalidateTag("users");
 
