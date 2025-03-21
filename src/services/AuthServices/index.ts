@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import { getUser } from "../UserServices";
 
 export const loginUser = async (userData: FieldValues) => {
+  console.log("Base API from AuthService:", process.env.NEXT_PUBLIC_BASE_API);
   try {
     const { data } = await axiosInstance.post("/auth/login", userData);
 

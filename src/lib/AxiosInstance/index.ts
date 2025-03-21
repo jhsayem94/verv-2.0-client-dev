@@ -6,6 +6,8 @@ const axiosInstance = axios.create({
   baseURL: envConfig.baseApi,
 });
 
+console.log("base api", envConfig.baseApi);
+
 axiosInstance.interceptors.request.use(
   async function (config) {
     const cookieStore = await cookies();
