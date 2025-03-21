@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Login from "../components/pages/Login/Login";
 import SocialLogin from "../components/pages/Login/SocialLogin";
+import { Suspense } from "react";
+import Loading from "../components/UI/Loading/Loading";
 
 const page = () => {
   return (
@@ -17,10 +19,10 @@ const page = () => {
         </p>
         <div className="w-[336px] h-[1px] bg-[#EEF1F3]"></div>
       </div>
-      {/* <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading />}>
         <Login />
-      </Suspense> */}
-      <Login />
+      </Suspense>
+      {/* <Login /> */}
 
       <p className="text-center text-[#3B5374]">
         Don’t have account?{" "}
