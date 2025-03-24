@@ -45,6 +45,12 @@ const PropertyDetails = () => {
   const setData = usePropertyDetailsStore((state) => state.setData);
   const setFiles = useFileStore((state) => state.setFiles);
 
+  // to check whether the first step is completed or not
+  const propertyOption = usePropertyDetailsStore(
+    (state) => state.propertyOption
+  );
+  const hasHydrated = usePropertyDetailsStore((state) => state.hasHydrated);
+
   // const { setFilesToStore } = useFileStore();
 
   const {
@@ -187,6 +193,17 @@ const PropertyDetails = () => {
     router.push("preview-listing");
   };
 
+  // check if the first step is completed
+  useEffect(() => {
+    if (!hasHydrated) return; // Wait for hydration before checking state
+
+    console.log("Hydration complete. Checking propertyOption:", propertyOption);
+
+    if (!propertyOption) {
+      router.push("/listing/add-property");
+    }
+  }, [hasHydrated, propertyOption, router]);
+
   // for file upload
   useEffect(() => {
     if (isSubmitting) {
@@ -197,7 +214,7 @@ const PropertyDetails = () => {
         console.log("Form submitted successfully with files:", imageFiles);
       }
       setIsSubmitting(false);
-      router.push("preview-listing"); // better to use absolute path
+      router.push("/listing/preview-listing"); // better to use absolute path
     }
   }, [isSubmitting, imageFiles, router]);
 

@@ -19,26 +19,22 @@ import {
 const page = () => {
   const router = useRouter();
 
+  const hasHydrated = usePropertyDetailsStore((state) => state.hasHydrated);
   const propertyOption = usePropertyDetailsStore(
     (state) => state.propertyOption
   );
-
   const remoteVideoViewing = usePropertyDetailsStore(
     (state) => state.remoteVideoViewing
   );
-
   const propertyDetails = usePropertyDetailsStore(
     (state) => state.propertyDetails
   );
-
   const tenancyDetails = usePropertyDetailsStore(
     (state) => state.tenancyDetails
   );
-
   const tenantPreferences = usePropertyDetailsStore(
     (state) => state.tenantPreferences
   );
-
   const features = usePropertyDetailsStore((state) => state.features);
 
   const termsAgreed = usePropertyDetailsStore((state) => state.termsAgreed);
@@ -50,6 +46,28 @@ const page = () => {
   const files: IStoredFile[] = useFileStore((state) => state.files);
   const loadFiles = useFileStore((state) => state.loadFiles);
   // const clearFiles = useFileStore((state) => state.clearFiles);
+
+  useEffect(() => {
+    if (!hasHydrated) return; // Wait for hydration before checking state
+
+    console.log("Hydration complete. Checking property details:");
+
+    if (
+      !propertyDetails ||
+      !tenancyDetails ||
+      !tenantPreferences ||
+      !features
+    ) {
+      router.push("/listing/property-details");
+    }
+  }, [
+    hasHydrated,
+    propertyDetails,
+    tenancyDetails,
+    tenantPreferences,
+    features,
+    router,
+  ]);
 
   // Load files from IndexedDB when page loads
   useEffect(() => {
