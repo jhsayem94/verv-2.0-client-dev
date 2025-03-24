@@ -39,6 +39,15 @@ const Navbar = () => {
     // }
   };
 
+  const handleProfile = (userId: string) => {
+    console.log(userId);
+    if (user?.isProfileUpdated) {
+      router.push("/profile/complete-profile");
+    } else {
+      router.push(`/profile/${userId}`);
+    }
+  };
+
   return (
     <nav className="px-10 py-6 bg-colorButton shadow-[0px_4px_4px_rgba(0,0,0,0.10)] hidden md:block sticky top-0 z-20">
       <div className="m-auto flex justify-between items-center text-white">
@@ -140,7 +149,11 @@ const Navbar = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent className="w-36">
                         <DropdownMenuGroup>
-                          <DropdownMenuItem>Profile</DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() => handleProfile(user.id)}
+                          >
+                            Profile
+                          </DropdownMenuItem>
                           <DropdownMenuItem>Setting</DropdownMenuItem>
                           <DropdownMenuItem onClick={() => handleLogout()}>
                             Logout
