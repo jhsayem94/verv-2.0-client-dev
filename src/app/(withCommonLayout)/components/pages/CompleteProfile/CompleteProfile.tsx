@@ -19,6 +19,7 @@ type TProfile = z.infer<typeof profileSchema>;
 const CompleteProfile = () => {
   const ref = useRef<MultipleSelectorRef>(null);
   const [image, setImage] = useState<File[] | null>(null);
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
 
   const {
     register,
@@ -29,21 +30,28 @@ const CompleteProfile = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setFormSubmitted(true); // Mark form as submitted
+
     const languageSelector = ref.current?.selectedValue;
-    if (
-      !ref.current?.selectedValue ||
-      ref.current?.selectedValue.length === 0
-    ) {
-      console.log("No language selected");
-      ref.current?.focus();
-    } else {
-      const profileData = {
-        ...data,
-        languages: languageSelector,
-      };
-      console.log(profileData);
-      console.log(image);
+    let isValid = true;
+
+    if (!languageSelector || languageSelector.length === 0) {
+      isValid = false;
     }
+
+    if (!image || image.length === 0) {
+      isValid = false;
+    }
+
+    if (!isValid) return; // Stop form submission
+
+    const profileData = {
+      ...data,
+      languages: languageSelector,
+    };
+
+    console.log(profileData);
+    console.log(image);
   };
 
   return (
@@ -77,25 +85,30 @@ const CompleteProfile = () => {
           </p>
         </div>
 
-        <div className="relative w-full">
-          <p className="text-colorTextSecondary font-normal leading-[150%] absolute left-3 top-1/2 -translate-y-1/2">
-            +44 (UK)
-          </p>
-          <Input
-            id="phoneNumber"
-            type="text"
-            placeholder="Phone Number"
-            {...register("phoneNumber", {
-              required: "Phone Number is required",
-            })}
-            className="pl-24 flex w-full items-center self-stretch py-1.5 rounded-md border border-gray-400 bg-white"
-          />
+        <div className="w-full">
+          <div className="relative ">
+            <p className="text-colorTextSecondary font-normal leading-[150%] absolute left-3 top-1/2 -translate-y-1/2">
+              +44 (UK)
+            </p>
+            <Input
+              id="phoneNumber"
+              type="text"
+              placeholder="Phone Number"
+              {...register("phoneNumber")}
+              className="pl-24 flex w-full items-center self-stretch py-1.5 rounded-md border border-gray-400 bg-white"
+            />
+          </div>
+          {errors?.["phoneNumber"] && (
+            <p className="text-red-500 mt-1">
+              {(errors["phoneNumber"] as { message?: string })?.message}
+            </p>
+          )}
         </div>
 
-        <div>
+        <div className="mb-4">
           <MultipleSelector
             ref={ref}
-            className=" rounded-md text-[16px] border border-gray-400 bg-white pr-10 mb-4"
+            className=" rounded-md text-[16px] border border-gray-400 bg-white pr-10"
             defaultOptions={languages}
             placeholder="Select Languages"
             emptyIndicator={
@@ -104,6 +117,11 @@ const CompleteProfile = () => {
               </p>
             }
           />
+          {formSubmitted && !ref.current?.selectedValue?.length && (
+            <p className="text-red-500 text-sm">
+              Please select at least one language.
+            </p>
+          )}
         </div>
 
         <div>
@@ -120,6 +138,9 @@ const CompleteProfile = () => {
               photos
             </p>
           </ImageUploader>
+          {formSubmitted && (!image || image.length === 0) && (
+            <p className="text-red-500 text-sm">Please upload a file.</p>
+          )}
         </div>
 
         <div>

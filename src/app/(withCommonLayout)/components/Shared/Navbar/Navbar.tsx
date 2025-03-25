@@ -41,7 +41,7 @@ const Navbar = () => {
 
   const handleProfile = (userId: string) => {
     console.log(userId);
-    if (user?.isProfileUpdated) {
+    if (!user?.isProfileUpdated) {
       router.push("/profile/complete-profile");
     } else {
       router.push(`/profile/${userId}`);
