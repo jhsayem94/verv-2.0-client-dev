@@ -45,9 +45,14 @@ const CompleteProfile = () => {
 
     if (!isValid) return; // Stop form submission
 
+    let languageArray;
+    if (languageSelector) {
+      languageArray = languageSelector.map((item) => item.value);
+    }
+
     const profileData = {
       ...data,
-      languages: languageSelector,
+      languages: languageArray,
     };
 
     console.log(profileData);
