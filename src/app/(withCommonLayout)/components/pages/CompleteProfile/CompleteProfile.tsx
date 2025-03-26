@@ -13,6 +13,7 @@ import { useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ImageUploader from "../../UI/ImageUploader/ImageUploader";
 import { Input } from "@/components/ui/input";
+import { useCreateUserProfile } from "@/hooks/user.hooks";
 
 type TProfile = z.infer<typeof profileSchema>;
 
@@ -20,6 +21,8 @@ const CompleteProfile = () => {
   const ref = useRef<MultipleSelectorRef>(null);
   const [image, setImage] = useState<File[] | null>(null);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+
+  const { mutate: handleCreateUserProfile, isPending } = useCreateUserProfile();
 
   const {
     register,
@@ -55,8 +58,16 @@ const CompleteProfile = () => {
       languages: languageArray,
     };
 
-    console.log(profileData);
-    console.log(image);
+    const formData = new FormData();
+
+    formData.append("data", JSON.stringify(profileData));
+    if (image) {
+      console.log(image);
+      formData.append("image", image[0]);
+    }
+
+    handleCreateUserProfile(formData);
+    console.log("Form Data", formData.get("image"));
   };
 
   return (

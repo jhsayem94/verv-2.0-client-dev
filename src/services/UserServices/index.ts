@@ -22,6 +22,29 @@ export const registerUser = async (userData: FieldValues): Promise<any> => {
   }
 };
 
+export const createUserProfile = async (formData: FormData): Promise<any> => {
+  console.log("Form Data from UserService");
+  try {
+    const { data } = await axiosInstance.post(
+      "/user/create-profile",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    return data;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    console.log(axiosError.response?.data || axiosError.message);
+
+    throw new Error("Failed to create user");
+  }
+};
+
 export const getUser = async (id: string): Promise<any> => {
   console.log("From User Service get", id);
   try {
