@@ -26,6 +26,7 @@ import { logout } from "@/services/AuthServices";
 const Navbar = () => {
   const { user, setIsLoading: userLoading } = useUser();
   console.log("User from navbar", user);
+  console.log("User photo", user?.landlord.profilePhoto);
 
   const router = useRouter();
 
@@ -141,7 +142,10 @@ const Navbar = () => {
                       <DropdownMenuTrigger asChild>
                         <Avatar className="cursor-pointer w-12 h-12">
                           <AvatarImage
-                            src="https://avatar.iran.liara.run/public"
+                            src={
+                              user?.landlord.profilePhoto ||
+                              "https://avatar.iran.liara.run/public"
+                            }
                             alt="avatar"
                           />
                           <AvatarFallback>CN</AvatarFallback>

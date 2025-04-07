@@ -17,6 +17,22 @@ export interface IUser {
   role: string;
 }
 
+export interface IUserContext {
+  id: string;
+  email: string;
+  password: string;
+  role: "SUPER_ADMIN" | "ADMIN" | "LANDLORD" | "TENANT";
+  isProfileUpdated: boolean;
+  status: "ACTIVE" | "BLOCKED" | "DELETED";
+  passwordChangedAt: string;
+  createdAt: string;
+  updatedAt: string;
+  tenant?: any;
+  landlord?: any;
+  admin?: any;
+  review?: any;
+}
+
 export interface ITrustPilot {
   showGrow?: boolean;
   showTrustPilot?: boolean;

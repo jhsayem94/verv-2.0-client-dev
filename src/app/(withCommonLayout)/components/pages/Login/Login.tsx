@@ -16,10 +16,9 @@ import { useUser } from "@/context/user.provider";
 const Login = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const redirect = searchParams.get("redirect");
 
   const { setIsLoading: userLoading } = useUser();
-
-  const redirect = searchParams.get("redirect");
 
   const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
 
