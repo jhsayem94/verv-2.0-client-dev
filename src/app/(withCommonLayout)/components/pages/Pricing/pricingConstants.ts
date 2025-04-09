@@ -5,6 +5,7 @@ type TOffer = {
 export type TPricingPlan = {
   id: number;
   pricingTitle: string;
+  planId: string;
   buttonName: string;
   buttonColor: string;
   buttonText: string;
@@ -24,6 +25,7 @@ export const pricingData: TPricingPlan[] = [
   {
     id: 1,
     pricingTitle: "Listing Only",
+    planId: "listing-only",
     buttonName: "Add Listing Now for Free",
     buttonColor: "bg-[#FFFFFF]",
     buttonText: "text-[#314660]",
@@ -47,6 +49,7 @@ export const pricingData: TPricingPlan[] = [
   {
     id: 2,
     pricingTitle: "Premier Listings",
+    planId: "premier-listings",
     price: 74.99,
     buttonName: "Add Listing Now",
     buttonColor: "bg-[#314660]",
@@ -71,6 +74,7 @@ export const pricingData: TPricingPlan[] = [
   {
     id: 3,
     pricingTitle: "Rent Ready",
+    planId: "rent-ready",
     price: 54.99,
     buttonName: "Add Listing Now",
     buttonColor: "bg-[#50B533]",

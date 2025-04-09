@@ -4,8 +4,11 @@ import rightMove from "../../../../../assets/images/right-move.png";
 import zoopla from "../../../../../assets/images/zoopla.png";
 import { Check } from "lucide-react";
 import { TPricingPlan } from "./pricingConstants";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const PricingCard = ({ data }: { data: TPricingPlan }) => {
+  const router = useRouter();
   return (
     <div
       className={`${data.bgClr}  rounded-3xl shadow-custom border border-[#eef1f3]  grid lg:grid-cols-3 grid-cols-1`}
@@ -42,15 +45,16 @@ const PricingCard = ({ data }: { data: TPricingPlan }) => {
                 ? "Looking to List with Verv only?"
                 : "Looking for more exposure? List with Zoopla & Rightmove!"}
             </p>
-            <button
+            <Button
               className={`w-auto  py-2 px-3 ${data.buttonColor} rounded-lg justify-center items-center gap-2 inline-flex`}
+              onClick={() => router.push(`/checkout?planId=${data.planId}`)}
             >
               <span
                 className={`${data.buttonText} text-[18px] font-semibold font-['Inter']`}
               >
                 {data.buttonName}
               </span>
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -126,11 +130,11 @@ const PricingCard = ({ data }: { data: TPricingPlan }) => {
                 </div>
               ))}
             </div>
-            <button className=" py-2 px-6 bg-white rounded-[32px] border-2 border-[#50B533] flex-col justify-center items-center gap-1 flex">
+            <Button className=" py-2 px-6 bg-white rounded-[32px] border-2 border-[#50B533] flex-col justify-center items-center gap-1 flex">
               <span className="text-[#50b533] text-[14px] font-semibold font-['Inter']">
                 Show more
               </span>
-            </button>
+            </Button>
           </div>
         </div>
       </div>
