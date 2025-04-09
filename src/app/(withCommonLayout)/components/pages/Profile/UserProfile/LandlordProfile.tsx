@@ -12,6 +12,7 @@ const LandlordProfile = () => {
   const { user, setIsLoading: userLoading } = useUser();
   const landlord = user?.landlord;
   console.log("Landlord", landlord);
+  console.log(userLoading);
 
   return (
     <div className="inter-tight-font">

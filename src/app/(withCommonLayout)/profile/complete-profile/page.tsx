@@ -1,9 +1,13 @@
+import { Suspense } from "react";
 import CompleteProfile from "../../components/pages/Profile/CompleteProfile/CompleteProfile";
+import Loading from "../../components/UI/Loading/Loading";
 
 const page = () => {
   return (
     <>
-      <CompleteProfile />
+      <Suspense fallback={<Loading />}>
+        <CompleteProfile />
+      </Suspense>
     </>
   );
 };

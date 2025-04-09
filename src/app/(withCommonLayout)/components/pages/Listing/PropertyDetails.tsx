@@ -27,8 +27,24 @@ import ImageUploader from "../../UI/ImageUploader/ImageUploader";
 import generateDescription from "@/services/GenerateDescription";
 import { usePropertyDetailsStore } from "@/store/store";
 import useFileStore from "@/store/fileStore";
+import {
+  useAddTemporaryListing,
+  useGetTemporaryListing,
+} from "@/hooks/listing.hook";
+import Loading from "../../UI/Loading/Loading";
 
 const PropertyDetails = () => {
+  const { mutate: handleCreateTemporaryListing, isPending } =
+    useAddTemporaryListing();
+
+  const {
+    data: temporaryListingData,
+    isLoading: temporaryListingLoading,
+    // isSuccess: temporaryListingSuccess,
+  } = useGetTemporaryListing();
+
+  console.log("Property Details temporaryListingData", temporaryListingData);
+
   const router = useRouter();
 
   // get the date field
@@ -39,7 +55,7 @@ const PropertyDetails = () => {
   const [error, setError] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  console.log("From Details", imageFiles);
+  // console.log("From Details", imageFiles);
 
   // store the data to local storage
   const setData = usePropertyDetailsStore((state) => state.setData);
@@ -184,6 +200,22 @@ const PropertyDetails = () => {
         termsAgreed: data.termsAgreed,
       };
 
+      const temporaryData = {
+        step: "Property Details",
+        data: propertyData,
+      };
+
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(temporaryData));
+
+      // Append each image file individually
+      for (const image of imageFiles) {
+        console.log("propertyImages", image);
+        formData.append("propertyImages", image);
+      }
+
+      handleCreateTemporaryListing(formData);
+
       console.log("propertyData", propertyData);
       setData(propertyData);
       await setFiles(imageFiles);
@@ -192,6 +224,12 @@ const PropertyDetails = () => {
     setIsSubmitting(true);
     router.push("preview-listing");
   };
+
+  // if (imageFiles) {
+  //   for (const image of imageFiles) {
+  //     console.log("propertyImages", image);
+  //   }
+  // }
 
   // check if the first step is completed
   useEffect(() => {
@@ -217,6 +255,10 @@ const PropertyDetails = () => {
       router.push("/listing/preview-listing"); // better to use absolute path
     }
   }, [isSubmitting, imageFiles, router]);
+
+  if (temporaryListingLoading || isPending) {
+    return <Loading />;
+  }
 
   return (
     <section className="w-[1216px] m-auto mt-14">

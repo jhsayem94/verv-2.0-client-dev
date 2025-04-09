@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { listingSchema } from "@/schema/listing.schema";
@@ -9,6 +9,11 @@ import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { usePropertyDetailsStore } from "@/store/store";
+import {
+  useAddTemporaryListing,
+  useGetTemporaryListing,
+} from "@/hooks/listing.hook";
+import Loading from "../../UI/Loading/Loading";
 
 const propertyOptionSchema = listingSchema.pick({
   propertyOption: true,
@@ -17,6 +22,15 @@ const propertyOptionSchema = listingSchema.pick({
 type TPropertyOption = z.infer<typeof propertyOptionSchema>;
 
 const PropertyOptions = () => {
+  const { mutate: handleCreateTemporaryListing, isPending } =
+    useAddTemporaryListing();
+
+  const {
+    data: temporaryListingData,
+    isLoading: temporaryListingLoading,
+    isSuccess: temporaryListingSuccess,
+  } = useGetTemporaryListing();
+
   const router = useRouter();
   const setData = usePropertyDetailsStore((state) => state.setData);
 
@@ -24,16 +38,44 @@ const PropertyOptions = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<TPropertyOption>({
     resolver: zodResolver(propertyOptionSchema),
-    // defaultValues: { propertyOption: "Whole property" },
+    defaultValues: {
+      propertyOption: temporaryListingData?.data?.data?.data?.propertyOption,
+    },
   });
+
+  useEffect(() => {
+    if (
+      temporaryListingSuccess &&
+      temporaryListingData?.data?.data?.data?.propertyOption
+    ) {
+      reset({
+        propertyOption: temporaryListingData.data.data.data.propertyOption,
+      });
+    }
+  }, [temporaryListingSuccess, temporaryListingData, reset]);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
+    const temporaryData = {
+      step: "Add Property",
+      data: data,
+    };
+
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(temporaryData));
+
+    handleCreateTemporaryListing(formData);
+
     setData(data);
     router.push("property-details");
   };
+
+  if (temporaryListingLoading) {
+    return <Loading />;
+  }
 
   return (
     <section className="w-[1216px] m-auto mt-14 space-y-5">
@@ -109,8 +151,12 @@ const PropertyOptions = () => {
             </p>
           )}
 
-          <Button type="submit" className="font-semibold bg-colorButton">
-            Save and Continue
+          <Button
+            type="submit"
+            className="font-semibold bg-colorButton"
+            disabled={isPending}
+          >
+            {isPending ? "Saving..." : "Save and Continue"}
           </Button>
         </form>
       </div>
