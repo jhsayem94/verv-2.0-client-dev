@@ -1,11 +1,13 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Checkout from "../components/pages/Checkout/Checkout";
+import Loading from "../components/UI/Loading/Loading";
 
 const page = () => {
   return (
     <div>
-      <h2>This is checkout page</h2>
-      <Checkout />
+      <Suspense fallback={<Loading />}>
+        <Checkout />
+      </Suspense>
     </div>
   );
 };
