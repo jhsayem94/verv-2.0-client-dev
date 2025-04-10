@@ -1,11 +1,11 @@
 export const propertyTypeOptions = [
   {
     label: "Residential",
-    options: [{ value: "Flat", label: "Flat" }],
+    options: [{ value: "FLAT", label: "Flat" }],
   },
   {
     label: "Commercial",
-    options: [{ value: "Bedsit", label: "Bedsit" }],
+    options: [{ value: "BEDSIT", label: "Bedsit" }],
   },
 ];
 
@@ -13,9 +13,9 @@ export const furnishedOptions = [
   {
     label: "Options",
     options: [
-      { value: "Furnished", label: "Furnished" },
-      { value: "Unfurnished", label: "Unfurnished" },
-      { value: "Choice", label: "Choice" },
+      { value: "FURNISHED", label: "Furnished" },
+      { value: "UNFURNISHED", label: "Unfurnished" },
+      { value: "CHOICE", label: "Choice" },
     ],
   },
 ];

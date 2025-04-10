@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCreatePaymentIntent } from "@/hooks/payment.hook";
+import { TPaymentProps } from "@/types";
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -9,7 +10,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 
-const PaymentForm = ({ amount }: { amount: number }) => {
+const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
   const stripe = useStripe();
   const elements = useElements();
   const [name, setName] = useState("");
@@ -70,8 +71,9 @@ const PaymentForm = ({ amount }: { amount: number }) => {
         payment_method: {
           card: card,
           billing_details: {
-            email: "test@gmail.com",
-            name: "test name",
+            email: userData.email,
+            name: userData.fullName,
+            phone: userData.phoneNumber,
           },
         },
       });

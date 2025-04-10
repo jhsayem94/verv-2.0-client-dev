@@ -6,12 +6,25 @@ import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import PaymentForm from "./PaymentForm";
+import { useUser } from "@/context/user.provider";
+import { TPaymentUserData } from "@/types";
 
 const stripe = loadStripe(envConfig.stripePublicKey as string);
 
 const Checkout = () => {
   const searchParams = useSearchParams();
   const planId = searchParams.get("planId");
+  const { user } = useUser();
+
+  const email = user?.email;
+  const fullName = user?.landlord.firstName + " " + user?.landlord.lastName;
+  const phoneNumber = user?.landlord.phoneNumber;
+
+  const userData: TPaymentUserData = {
+    email,
+    fullName,
+    phoneNumber,
+  };
 
   const [price, setPrice] = useState<number>(0);
 
@@ -32,7 +45,7 @@ const Checkout = () => {
         This is checkout components {planId} - {price}
       </h2>
       <Elements stripe={stripe}>
-        <PaymentForm amount={price} />
+        <PaymentForm amount={price} planId={planId} userData={userData} />
       </Elements>
     </div>
   );

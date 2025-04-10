@@ -219,3 +219,15 @@ export type TListingData = {
   tenancyDetails: TTenancyDetails;
   tenantPreferences: TTenantPreferences;
 };
+
+export type TPaymentUserData = {
+  email: string | undefined;
+  fullName: string | undefined;
+  phoneNumber: string | undefined;
+};
+
+export type TPaymentProps = {
+  amount: number;
+  planId: string | null;
+  userData: TPaymentUserData;
+};

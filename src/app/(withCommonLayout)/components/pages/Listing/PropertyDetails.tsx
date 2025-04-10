@@ -43,7 +43,10 @@ const PropertyDetails = () => {
     // isSuccess: temporaryListingSuccess,
   } = useGetTemporaryListing();
 
-  console.log("Property Details temporaryListingData", temporaryListingData);
+  console.log(
+    "Property Details temporaryListingData",
+    temporaryListingData?.data?.data?.data?.propertyOption
+  );
 
   const router = useRouter();
 
@@ -84,10 +87,10 @@ const PropertyDetails = () => {
       houseNumber: "4A",
       address: "12 Brushfield Street",
       address2: "",
-      propertyType: "Flat",
+      propertyType: "FLAT",
       bedrooms: 1,
       bathrooms: 1,
-      furnishingOptions: "Furnished",
+      furnishingOptions: "FURNISHED",
       town: "London",
       description: "This is a description of the property",
       monthlyRent: 1200,
@@ -190,6 +193,7 @@ const PropertyDetails = () => {
       };
 
       const propertyData = {
+        propertyOption: temporaryListingData?.data?.data?.data?.propertyOption,
         propertyDetails,
         tenancyDetails,
         features,
@@ -199,6 +203,8 @@ const PropertyDetails = () => {
         youtubeUrl: data?.youtubeUrl,
         termsAgreed: data.termsAgreed,
       };
+
+      console.log("propertyData", propertyData);
 
       const temporaryData = {
         step: "Property Details",
@@ -216,13 +222,12 @@ const PropertyDetails = () => {
 
       handleCreateTemporaryListing(formData);
 
-      console.log("propertyData", propertyData);
       setData(propertyData);
       await setFiles(imageFiles);
       // setFilesToStore(files);
     }
     setIsSubmitting(true);
-    router.push("preview-listing");
+    // router.push("preview-listing");
   };
 
   // if (imageFiles) {
