@@ -120,6 +120,7 @@ const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
   return (
     <div>
       <h2>This is payment form {amount}</h2>
+      
       <div className="relative px-4 max-w-lg mx-auto">
         <div className="bg-white px-8 py-6 rounded-lg shadow-xl">
           <form className="space-y-4" onSubmit={handleSubmit}>
