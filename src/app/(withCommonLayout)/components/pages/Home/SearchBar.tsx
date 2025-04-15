@@ -25,8 +25,8 @@ const SearchBar = () => {
       )
       : [];
     return (
-        <div className="lg:w-[600px] w-94  mx-auto p-2 mt-6 rounded-lg relative ">
-            <div className="flex justify-center mb-4 ">
+        <div className="lg:w-[630px] w-94  mx-auto p-2 mt-7 rounded-lg relative ">
+            <div className="flex justify-center mb-6 ">
               <button
                 className={`px-1 w-[70px]  text-[16px] rounded-lg flex justify-evenly items-center ${toggle === "Buy" ? "bg-white text-[#50B533]" : "bg-[#50B533] text-white "}`}
                 onClick={() => setToggle("Buy")}
@@ -42,14 +42,14 @@ const SearchBar = () => {
                 Rent
               </button>
             </div>
-            <div className='flex bg-white items-center rounded-full justify-between p-5'>
+            <div className='flex bg-white items-center rounded-full justify-between p-4'>
               <MapPin className='w-[28px] h-[28px] text-[#A6AFBB]' />
               <div className='w-5/6'>
                 <p className='text-gray-900 text-lg font-semibold ml-2 mb-2'>Location</p>
                 <Input
                   type="text"
                   placeholder="Where are you looking to rent?"
-                  className="w-full p-2 border-0 shadow-none focus:border-none rounded focus:outline-none "
+                  className="w-full p-2 border-0 shadow-none focus:border-none rounded focus:outline-none"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                 />
