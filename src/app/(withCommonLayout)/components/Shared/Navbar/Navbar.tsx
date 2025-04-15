@@ -49,6 +49,14 @@ const Navbar = () => {
     }
   };
 
+  const handleAddListing = () => {
+    if (!user?.isProfileUpdated) {
+      router.push("/profile/complete-profile");
+    } else {
+      router.push("/listing/add-property");
+    }
+  };
+
   return (
     <nav className="px-10 py-6 bg-colorButton shadow-[0px_4px_4px_rgba(0,0,0,0.10)] hidden md:block sticky top-0 z-20">
       <div className="m-auto flex justify-between items-center text-white">
@@ -108,7 +116,7 @@ const Navbar = () => {
             </ul>
             <Button
               className="text-lg text-colorButton font-semibold bg-white rounded-[32px] w-[180px] h-[56px] py-2 px-4"
-              onClick={() => router.push("/listing/add-property")}
+              onClick={handleAddListing}
             >
               <HomeIcon width={25} height={24} />
               Add Listing
@@ -142,7 +150,10 @@ const Navbar = () => {
                       <DropdownMenuTrigger asChild>
                         <Avatar className="cursor-pointer w-12 h-12">
                           <AvatarImage
-                            src=""
+                            src={
+                              user?.landlord?.profilePhoto ??
+                              "https://avatar.iran.liara.run/public"
+                            }
                             alt="avatar"
                           />
                           <AvatarFallback>CN</AvatarFallback>
