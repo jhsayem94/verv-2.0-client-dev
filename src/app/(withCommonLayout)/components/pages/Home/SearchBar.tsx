@@ -19,11 +19,8 @@ const SearchBar = () => {
     const [toggle, setToggle] = useState("Rent");
     const [query, setQuery] = useState("");
   
-    const filteredResults = query
-      ? demoData[toggle].filter((item) =>
-        item.location.toLowerCase().includes(query.toLowerCase())
-      )
-      : [];
+    const filteredResults = query? demoData[toggle].filter((item) =>
+        item.location.toLowerCase().includes(query.toLowerCase())): [];
     return (
         <div className="lg:w-[630px] w-94  mx-auto p-2 mt-7 rounded-lg relative ">
             <div className="flex justify-center mb-6 ">

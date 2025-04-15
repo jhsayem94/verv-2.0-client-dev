@@ -18,20 +18,16 @@ const Checkout = () => {
   const planId = searchParams.get("planId");
   const { user } = useUser();
 
-  // const email = user?.email;
-  // const fullName = user?.landlord.firstName + " " + user?.landlord.lastName;
-  // const phoneNumber = user?.landlord.phoneNumber;
+  const email = user?.email;
+  const fullName = user?.landlord.firstName + " " + user?.landlord.lastName;
+  const phoneNumber = user?.landlord.phoneNumber;
 
-  // const userData: TPaymentUserData = {
-  //   email,
-  //   fullName,
-  //   phoneNumber,
-  // };
-  const userData = {
-    email: "jahid@sayem.com",
-    fullName: "jahid",
-    phoneNumber: "02131651652"
-  }
+  const userData: TPaymentUserData = {
+    email,
+    fullName,
+    phoneNumber,
+  };
+
   console.log(userData)
 
   const [price, setPrice] = useState<number>(0);

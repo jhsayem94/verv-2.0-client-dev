@@ -70,7 +70,7 @@ const CompleteProfile = () => {
       ...data,
       languages: languageArray,
     };
-
+    console.log(profileData, "Got profile data")
     const formData = new FormData();
 
     formData.append("data", JSON.stringify(profileData));

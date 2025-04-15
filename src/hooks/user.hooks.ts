@@ -19,7 +19,8 @@ export const useRegisterUser = () => {
 };
 
 export const useCreateUserProfile = () => {
-  return useMutation<any, Error, FormData>({
+  console.log("From User Hook")
+  return useMutation<any, Error, FormData>({    
     mutationKey: ["CREATE_PROFILE"],
     mutationFn: async (userData) => await createUserProfile(userData),
     onSuccess: () => {
