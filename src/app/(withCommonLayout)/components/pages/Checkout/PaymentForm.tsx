@@ -1,7 +1,6 @@
 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button } from "@/components/ui/button";
 import { useCreatePaymentIntent } from "@/hooks/payment.hook";
 import { TPaymentProps } from "@/types";
 import {
@@ -17,10 +16,8 @@ import {
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Check } from "lucide-react";
 import Link from "next/link";
@@ -454,7 +451,6 @@ const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
             </div>
           </AlertDialogContent>
         }
-
       </AlertDialog>
     </div>
   );

@@ -8,8 +8,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import PaymentForm from "./PaymentForm";
 import { useUser } from "@/context/user.provider";
 import { TPaymentUserData } from "@/types";
-import InputField from "../../UI/Form/InputField";
-import { Button } from "@/components/ui/button";
 
 const stripe = loadStripe(envConfig.stripePublicKey as string);
 
