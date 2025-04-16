@@ -70,8 +70,8 @@ const LandlordProfile = () => {
               <p className="text-xs">Phone number</p>
             </div>
           </div>
-          <div className="w-[264px] bg-white rounded-xl lg:block hidden shadow absolute top-20 right-0">
-            <div className="p-9 grid grid-cols-1 gap-y-3">
+          <div className="w-[264px] bg-white rounded-xl lg:block hidden shadow absolute top-[150px] right-0">
+            <div className="p-9 grid grid-cols-1 gap-y-2.5">
               <div className="">
                 <h2 className="text-[#233244] text-4xl font-semibold  leading-[44px] flex items-center">
                   430

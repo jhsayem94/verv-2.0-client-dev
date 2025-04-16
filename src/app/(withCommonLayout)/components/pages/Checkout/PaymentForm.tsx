@@ -62,6 +62,7 @@ const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
   const [error, setError] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [open, setOpen] = useState(false);
 
   const { mutateAsync: createPaymentIntent } = useCreatePaymentIntent();
   let shippingFee = 0;
@@ -139,6 +140,7 @@ const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
       if (paymentIntent.status === "succeeded") {
         console.log("transaction id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
+        setOpen(true);
 
         // now save the payment in the database
         // const payment = {
@@ -171,7 +173,7 @@ const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
   return (
     <div>
       <h2>This is payment form {amount}</h2>
-      <AlertDialog>
+
       <div className="">
         <form className="" onSubmit={handleSubmit}>
           <div className='lg:flex justify-between items-start gap-x-8'>
@@ -348,7 +350,7 @@ const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
                     </div>
                     <div className=" flex justify-between items-start">
                       <p className=" text-slate-500 text-base font-normal">Discount</p>
-                      <p className="text-center  text-red-600 text-base font-semibold ">- £{discount}</p>
+                      <p className="text-center  text-red-600 text-base font-semibold ">- £{discount.toFixed(2)}</p>
                     </div>
                     <div className=" flex justify-between items-start">
                       <p className=" text-slate-500 text-base font-normal">Tax</p>
@@ -362,7 +364,7 @@ const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
                   <div className=" w-full h-0.5   bg-[#EAECEE]" />
                   <div className="flex justify-between items-start">
                     <p className=" text-slate-700 text-xl font-semibold">Total</p>
-                    <p className="text-center  text-slate-700 text-xl font-semibold">£{total}</p>
+                    <p className="text-center  text-slate-700 text-xl font-semibold">£{total.toFixed(2)}</p>
                   </div>
                 </div>
               </div>
@@ -378,39 +380,81 @@ const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
                   className={`w-full mt-4 py-4 px-4 bg-[#50B533] rounded-lg justify-center items-center gap-2 inline-flex`}>
                   <span className={`text-white text-[16px] font-semibold `}>Complete Payment</span>
                 </button> */}
-                <AlertDialogTrigger asChild>
+
                 <button
                   type="submit"
                   disabled={!stripe || !clientSecret}
                   className={`w-full mt-4 py-4 px-4 bg-[#50B533] rounded-lg justify-center items-center gap-2 inline-flex`}>
                   <span className={`text-white text-[16px] font-semibold `}>Complete Payment</span>
                 </button>
-              </AlertDialogTrigger>
+
               </div>
             </div>
           </div>
 
         </form>
       </div>
-    
-     {
-      (transactionId.length !== 0)&&   <AlertDialogContent
-      className="w-[500px] mx-auto h-[600px]"
-      >
-      <AlertDialogHeader>
-        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-        <AlertDialogDescription>
-          Take a moment to review the details provided to ensure you
-          understand the implications.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
-        <AlertDialogAction>Okay</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-     }
-      
+      <AlertDialog open={open}
+        onOpenChange={setOpen}>
+        {
+          <AlertDialogContent
+            className="w-[430px] mx-auto "
+
+          >
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-center mb-6">
+
+                <Check strokeWidth={2.5}
+                  className="h-[20px] w-[20px] text-[#FFFFFF] mx-auto bg-[#50B533] rounded-full p-1 mb-4"
+                />
+                <p className=" text-slate-500 text-[20px] font-normal">Payment Success!</p>
+                <p className="text-center  text-slate-700 text-xl font-semibold mt-2">£{total.toFixed(2)}</p>
+
+              </AlertDialogTitle>
+              <AlertDialogDescription>
+                <p className=" w-full h-[1px]   bg-[#EAECEE]" />
+                <div className="grid grid-cols-1 gap-y-4 my-4">
+                  <div className=" flex justify-between items-start">
+                    <p className=" text-[#56677D] text-[14px] font-normal">Ref Number</p>
+                    <p className="text-center  text-[#314660] text-[14px] font-bold ">000085752257</p>
+                  </div>
+                  <div className=" flex justify-between items-start">
+                    <p className=" text-[#56677D] text-[14px] font-normal">Payment Time</p>
+                    <p className="text-center  text-[#314660] text-[14px] font-bold ">25-02-2023, 13:22:16</p>
+                  </div>
+                  <div className=" flex justify-between items-start">
+                    <p className=" text-[#56677D] text-[14px] font-normal">Payment Method</p>
+                    <p className="text-center  text-[#314660] text-[14px] font-bold ">Bank Transfer</p>
+                  </div>
+                  <div className=" flex justify-between items-start">
+                    <p className=" text-[#56677D] text-[14px] font-normal">Sender Name</p>
+                    <p className="text-center  text-[#314660] text-[14px] font-bold ">Antonio Roberto</p>
+                  </div>
+                </div>
+                <p className=" w-full h-[1px]   bg-[#EAECEE]" />
+                <div className="grid grid-cols-1 gap-y-4 mt-4">
+                  <div className="flex justify-between items-start">
+                    <p className=" text-[#56677D] text-[14px] font-normal">Amount</p>
+                    <p className="text-center  text-[#314660] text-[14px] font-bold">IDR 1,000,000</p>
+                  </div>
+                  <div className="flex justify-between items-start">
+                    <p className=" text-[#56677D] text-[14px] font-normal">Admin Fee</p>
+                    <p className="text-center  text-[#314660] text-[14px] font-bold">IDR 193.00</p>
+                  </div>
+                </div>
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <div className="flex justify-evenly">
+              <AlertDialogCancel className="lg:w-auto w-full max-w-[350px] mx-auto  text-black text-[18px] font-semibold px-5 h-[24x] bg-[#F5F5F5] rounded-[32px] ">
+                <Link href="/"  >Back to home
+
+                </Link>
+              </AlertDialogCancel>
+              <AlertDialogAction className="lg:w-auto w-full max-w-[350px] mx-auto  text-white text-[18px] font-semibold px-5 h-[24x] bg-[#50b533] hover:bg-[#50b533] rounded-[32px] ">Download PDF</AlertDialogAction>
+            </div>
+          </AlertDialogContent>
+        }
+
       </AlertDialog>
     </div>
   );
