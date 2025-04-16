@@ -55,17 +55,17 @@ const PaymentForm = ({ amount, planId, userData }: TPaymentProps) => {
   const stripe = useStripe();
   const elements = useElements();
   const [name, setName] = useState("");
-  const [postalCode, setPostalCode] = useState("");
+  // const [postalCode, setPostalCode] = useState("");
   const [error, setError] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [open, setOpen] = useState(false);
 
   const { mutateAsync: createPaymentIntent } = useCreatePaymentIntent();
-  let shippingFee = 0;
-  let tax = 0;
-  let discount = (amount * 0.05)
-  let total = amount - (discount + shippingFee + tax)
+  const shippingFee = 0;
+  const tax = 0;
+  const discount = (amount * 0.05)
+  const total = amount - (discount + shippingFee + tax)
 
 
 
